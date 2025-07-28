@@ -3,25 +3,91 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --primary: #0FC49A;
+  --primary-dark: #0B9A77;
+  --primary-light: #1DEAB8;
+  --accent: #DAAF49;
+  --background-start: #041714;
+  --background-mid: #072B25;
+  --background-end: #0A3D35;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, 
+    var(--background-start) 0%,
+    var(--background-mid) 50%,
+    var(--background-end) 100%
+  );
+  min-height: 100vh;
+  color: #ffffff;
+  /* Optimasi performa */
+  will-change: auto;
+  transform: translateZ(0);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-start);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(to right, var(--primary), var(--primary-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Gradient Border */
+.gradient-border {
+  position: relative;
+  border: 2px solid transparent;
+  background: linear-gradient(var(--background-mid), var(--background-mid)) padding-box,
+              linear-gradient(135deg, var(--primary), transparent) border-box;
+  border-radius: theme('borderRadius.lg');
+}
+
+/* Optimized Animated Background - dikurangi intensitasnya */
+.animated-gradient {
+  background: linear-gradient(
+    270deg,
+    var(--background-start),
+    var(--background-mid),
+    var(--background-end),
+    var(--background-mid)
+  );
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Optimasi performa untuk elemen yang sering berubah */
+.performance-optimized {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
