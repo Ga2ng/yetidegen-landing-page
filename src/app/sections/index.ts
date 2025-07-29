@@ -1,3 +1,9 @@
 export { default as Header } from './Header';
 export { default as VideoSection } from './VideoSection';
-export { default as ContentSection } from './ContentSection'; 
+export { default as MeetYetiSection } from './MeetYetiSection';
+export { default as YetiMemesSection } from './YetiMemesSection';
+export { default as HowToBuySection } from './HowToBuySection';
+export { default as PartnersSection } from './PartnersSection';
+export { default as RoadmapSection } from './RoadmapSection';
+export { default as FAQSection } from './FAQSection';
+export { default as Footer } from './Footer';

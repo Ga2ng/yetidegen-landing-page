@@ -34,14 +34,26 @@ export default function VideoSection({
     <div className="relative min-h-screen bg-black overflow-hidden">
       {/* Full Screen Video Background */}
       <div className="absolute inset-0">
+        {/* Desktop Video */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="h-full w-full object-cover"
+          className="hidden md:block h-full w-full object-cover"
         >
           <source src="/assets/MAINVIDEO.webm" type="video/webm" />
+        </video>
+        
+        {/* Mobile Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="block md:hidden h-full w-full object-cover"
+        >
+          <source src="/assets/PATAPIM.webm" type="video/webm" />
         </video>
         
         {/* Optimized Dark Overlay */}

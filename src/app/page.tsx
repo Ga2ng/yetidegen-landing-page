@@ -1,7 +1,7 @@
 "use client";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Header, VideoSection, ContentSection } from "./sections";
+import { Header, VideoSection, MeetYetiSection, YetiMemesSection, HowToBuySection, PartnersSection, RoadmapSection, FAQSection, Footer } from "./sections";
 import { Navbar } from "./components";
 
 export default function Home() {
@@ -104,8 +104,26 @@ export default function Home() {
         />
       </div>
 
-      {/* Section 3 - More Content */}
-      {/* <ContentSection /> */}
+      {/* Section 3 - Meet YETI Section */}
+      <MeetYetiSection />
+
+      {/* Section 4 - YETI Memes Section */}
+      <YetiMemesSection />
+
+      {/* Section 5 - How to Buy Section */}
+      {/* <HowToBuySection /> */}
+
+      {/* Section 6 - Partners Section */}
+      {/* <PartnersSection /> */}
+
+      {/* Section 7 - Roadmap Section */}
+      {/* <RoadmapSection /> */}
+
+      {/* Section 8 - FAQ Section */}
+      {/* <FAQSection /> */}
+
+      {/* Footer */}
+      {/* <Footer /> */}
     </div>
   );
 }

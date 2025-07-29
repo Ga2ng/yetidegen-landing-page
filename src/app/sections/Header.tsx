@@ -78,7 +78,7 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                 {/* Main Mascot Image - Optimized */}
                 <div className="relative w-full h-full z-10">
                   <Image
-                    src="/assets/gif/yeti1.gif"
+                    src="/assets/gif/yeti3.gif"
                     alt="YETI Mascot"
                     fill
                     className="object-contain drop-shadow-2xl"
