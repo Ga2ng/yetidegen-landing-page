@@ -76,7 +76,7 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                 />
 
                 {/* Main Mascot Image - Optimized */}
-                <div className="relative w-full h-full z-10">
+                {/* <div className="relative w-full h-full z-10">
                   <Image
                     src="/assets/gif/yeti3.gif"
                     alt="YETI Mascot"
@@ -90,7 +90,7 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                       transform: "translateZ(0)"
                     }}
                   />
-                </div>
+                </div> */}
 
                 {/* Floating Particles - dikurangi jumlah */}
                 {[...Array(4)].map((_, i) => (
