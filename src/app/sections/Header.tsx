@@ -189,7 +189,8 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
 
                     {/* Telegram Button */}
                     <motion.a
-                      href="https://t.me/YetiSolana"
+                      // href="https://t.me/YetiSolana"
+                      href="#"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden rounded-2xl border-2 border-emerald-400/30 text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-emerald-400/60"
