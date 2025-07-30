@@ -69,6 +69,38 @@ export default function YetiMemesSection() {
     }
   ];
 
+  // Mobile memes dengan MAINVIDEO.webm sebagai card pertama
+  const mobileMemes = [
+    { 
+      id: 1, 
+      video: "/assets/MAINVIDEO.webm"
+    },
+    { 
+      id: 2, 
+      video: "/assets/PATAPIM.webm"
+    },
+    { 
+      id: 3, 
+      video: "/assets/images/yeti7.webp"
+    },
+    { 
+      id: 4, 
+      video: "/assets/coin.webm"
+    },
+    { 
+      id: 5, 
+      video: "/assets/images/yeti11.webp"
+    },
+    { 
+      id: 6, 
+      video: "/assets/images/yeti8.webp"
+    },
+    { 
+      id: 7, 
+      video: "/assets/pump_it.webm"
+    }
+  ];
+
   const handleMemeClick = (index: number) => {
     setActiveMeme(index);
   };
@@ -114,9 +146,9 @@ export default function YetiMemesSection() {
           onMemeClick={handleMemeClick} 
         />
 
-        {/* Mobile Layout (sm) - 2 Columns */}
+        {/* Mobile Layout (sm) - 2 Columns - Only 7 cards with MAINVIDEO.webm first */}
         <MemeGrid 
-          memes={memes.slice(0, 15)} 
+          memes={mobileMemes} 
           layout="mobile" 
           onMemeClick={handleMemeClick} 
         />
