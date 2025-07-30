@@ -66,42 +66,6 @@ export default function YetiMemesSection() {
     { 
       id: 15, 
       video: "/assets/images/yeti11.webp"
-    },
-    { 
-      id: 16, 
-      video: "/assets/YETATE2.webm"
-    },
-    { 
-      id: 17, 
-      video: "/assets/yetivid4.webm"
-    },
-    { 
-      id: 18, 
-      video: "/assets/yetivid5.webm"
-    },
-    { 
-      id: 19, 
-      video: "/assets/yetivid6.webm"
-    },
-    { 
-      id: 20, 
-      video: "/assets/images/yeti12.webp"
-    },
-    { 
-      id: 21, 
-      video: "/assets/yetivid7.webm"
-    },
-    { 
-      id: 22, 
-      video: "/assets/images/yeti15.webp"
-    },
-    { 
-      id: 23, 
-      video: "/assets/images/yeti13.webp"
-    },
-    { 
-      id: 24, 
-      video: "/assets/images/yeti14.webp"
     }
   ];
 
@@ -229,7 +193,7 @@ export default function YetiMemesSection() {
         {/* Tablet Layout (md-lg) - 3 Columns */}
         <div className="hidden md:block lg:hidden">
           <div className="grid grid-cols-3 gap-4 overflow-hidden">
-            {memes.slice(0, 18).map((meme, index) => (
+            {memes.slice(0, 15).map((meme, index) => (
               <motion.div
                 key={meme.id}
                 className={`group cursor-pointer ${
@@ -247,9 +211,6 @@ export default function YetiMemesSection() {
                   index === 11 ? 'col-span-1 row-span-1' :
                   index === 12 ? 'col-span-2 row-span-1' :
                   index === 13 ? 'col-span-1 row-span-1' :
-                  index === 14 ? 'col-span-1 row-span-1' :
-                  index === 15 ? 'col-span-2 row-span-1' :
-                  index === 16 ? 'col-span-1 row-span-1' :
                   'col-span-1 row-span-1'
                 }`}
                 initial={{ opacity: 0, y: 30 }}
@@ -287,7 +248,7 @@ export default function YetiMemesSection() {
         {/* Mobile Layout (sm) - 2 Columns */}
         <div className="block md:hidden">
           <div className="grid grid-cols-2 gap-3 overflow-hidden">
-            {memes.slice(0, 14).map((meme, index) => (
+            {memes.slice(0, 15).map((meme, index) => (
               <motion.div
                 key={meme.id}
                 className={`group cursor-pointer ${

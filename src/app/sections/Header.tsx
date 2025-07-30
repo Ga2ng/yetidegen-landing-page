@@ -83,12 +83,16 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                     fill
                     className="object-contain drop-shadow-2xl"
                     priority
-                    sizes="(max-width: 768px) 60vw, (max-width: 1200px) 40vw, 30vw"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 35vw, 25vw"
                     style={{ 
                       filter: "drop-shadow(0 0 20px rgba(15, 196, 154, 0.2))",
                       willChange: "auto",
                       transform: "translateZ(0)"
                     }}
+                    loading="eager"
+                    quality={85}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                   />
                 </div>
 
