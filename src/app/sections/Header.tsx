@@ -1,7 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useState, useEffect } from "react";
 
 interface HeaderProps {
   scale: any;
@@ -10,28 +9,6 @@ interface HeaderProps {
 }
 
 export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) {
-  const [isIOS, setIsIOS] = useState(false);
-  const [isImageLoading, setIsImageLoading] = useState(true);
-  
-  // Detect iOS device
-  useEffect(() => {
-    const userAgent = navigator.userAgent;
-    setIsIOS(/iPad|iPhone|iPod/.test(userAgent));
-  }, []);
-
-  // Simplified animation for iOS
-  const animationSettings = isIOS ? {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.4, type: "tween" },
-    viewport: { once: true, margin: "-50px" }
-  } : {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, type: "spring", stiffness: 100 },
-    viewport: { once: true }
-  };
-
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-background-start via-background-mid to-background-end performance-optimized">
       <AnimatePresence>
@@ -100,13 +77,6 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
 
                 {/* Main Mascot Image - Optimized */}
                 <div className="relative w-full h-full z-10">
-                  {isImageLoading && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-full">
-                      <div className="text-emerald-400 text-lg font-semibold animate-pulse">
-                        Loading...
-                      </div>
-                    </div>
-                  )}
                   <Image
                     src="/assets/gif/yeti3.gif"
                     alt="YETI Mascot"
@@ -114,19 +84,15 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                     className="object-contain drop-shadow-2xl"
                     priority
                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 35vw, 25vw"
-                    style={{
+                    style={{ 
                       filter: "drop-shadow(0 0 20px rgba(15, 196, 154, 0.2))",
                       willChange: "auto",
                       transform: "translateZ(0)"
                     }}
                     loading="eager"
                     quality={85}
-                    onLoad={() => setIsImageLoading(false)}
-                    onError={(e) => {
-                      console.log('Image failed to load:', e);
-                      setIsImageLoading(false);
-                      // Fallback to static image if GIF fails
-                    }}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                   />
                 </div>
 
@@ -206,7 +172,7 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                     <motion.a
                       href="#buy"
                       className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/25"
-                      whileHover={{ scale: isIOS ? 1.02 : 1.05 }}
+                      whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <span className="relative z-10 flex items-center gap-2">
@@ -232,7 +198,7 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden rounded-2xl border-2 border-emerald-400/30 text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-emerald-400/60"
-                      whileHover={{ scale: isIOS ? 1.02 : 1.05 }}
+                      whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
                     >
                       <span className="relative z-10 flex items-center gap-2 font-semibold text-lg">
