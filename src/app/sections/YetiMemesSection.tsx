@@ -1,10 +1,17 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 export default function YetiMemesSection() {
   const [activeMeme, setActiveMeme] = useState(0);
+  const [isIOS, setIsIOS] = useState(false);
+  
+  // Detect iOS device
+  useEffect(() => {
+    const userAgent = navigator.userAgent;
+    setIsIOS(/iPad|iPhone|iPod/.test(userAgent));
+  }, []);
   
   const memes = [
     { 
@@ -69,6 +76,17 @@ export default function YetiMemesSection() {
     }
   ];
 
+  // Simplified animation for better iOS performance
+  const animationSettings = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { 
+      duration: 0.4, 
+      type: "tween"
+    },
+    viewport: { once: true, margin: "-50px" }
+  };
+
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-emerald-900 overflow-hidden">
       {/* Title Section */}
@@ -96,15 +114,7 @@ export default function YetiMemesSection() {
               <motion.div
                 key={meme.id}
                 className="group cursor-pointer break-inside-avoid mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: index * 0.05,
-                  type: "spring",
-                  stiffness: 100
-                }}
-                viewport={{ once: true }}
+                {...animationSettings}
                 onClick={() => setActiveMeme(index)}
               >
                 <div className={`relative bg-gradient-to-br from-emerald-500/15 to-teal-500/15 backdrop-blur-md rounded-xl border border-emerald-400/30 overflow-hidden transition-all duration-300 hover:border-emerald-300/60 hover:shadow-lg hover:shadow-emerald-500/20 ${
@@ -121,15 +131,22 @@ export default function YetiMemesSection() {
                         alt="YETI Meme"
                         fill
                         className="object-cover rounded-lg"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
                       />
                     ) : (
                       <video 
                         src={meme.video}
                         className="w-full h-full object-cover rounded-lg"
-                        autoPlay
+                        autoPlay={!isIOS}
                         muted
                         loop
                         playsInline
+                        preload="none"
+                        onError={(e) => {
+                          console.log('Video error:', e);
+                          // Log error untuk debugging
+                        }}
                       />
                     )}
                   </div>
@@ -146,15 +163,7 @@ export default function YetiMemesSection() {
               <motion.div
                 key={meme.id}
                 className="group cursor-pointer break-inside-avoid mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: index * 0.05,
-                  type: "spring",
-                  stiffness: 100
-                }}
-                viewport={{ once: true }}
+                {...animationSettings}
                 onClick={() => setActiveMeme(index)}
               >
                 <div className={`relative bg-gradient-to-br from-emerald-500/15 to-teal-500/15 backdrop-blur-md rounded-xl border border-emerald-400/30 overflow-hidden transition-all duration-300 hover:border-emerald-300/60 hover:shadow-lg hover:shadow-emerald-500/20 ${
@@ -172,15 +181,21 @@ export default function YetiMemesSection() {
                         alt="YETI Meme"
                         fill
                         className="object-cover rounded-lg"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 20vw, 16vw"
                       />
                     ) : (
                       <video 
                         src={meme.video}
                         className="w-full h-full object-cover rounded-lg"
-                        autoPlay
+                        autoPlay={!isIOS}
                         muted
                         loop
                         playsInline
+                        preload="none"
+                        onError={(e) => {
+                          console.log('Video error:', e);
+                        }}
                       />
                     )}
                   </div>
@@ -213,10 +228,7 @@ export default function YetiMemesSection() {
                   index === 13 ? 'col-span-1 row-span-1' :
                   'col-span-1 row-span-1'
                 }`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                {...animationSettings}
                 onClick={() => setActiveMeme(index)}
               >
                 <div className="relative bg-gradient-to-br from-emerald-500/10 to-teal-500/10 backdrop-blur-md rounded-xl border border-emerald-400/30 h-full overflow-hidden transition-all duration-300 hover:border-emerald-300/60 hover:shadow-lg hover:shadow-emerald-500/20">
@@ -227,15 +239,21 @@ export default function YetiMemesSection() {
                         alt="YETI Meme"
                         fill
                         className="object-cover rounded-lg"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 33vw, 25vw"
                       />
                     ) : (
                       <video 
                         src={meme.video}
                         className="w-full h-full object-cover rounded-lg"
-                        autoPlay
+                        autoPlay={!isIOS}
                         muted
                         loop
                         playsInline
+                        preload="none"
+                        onError={(e) => {
+                          console.log('Video error:', e);
+                        }}
                       />
                     )}
                   </div>
@@ -245,19 +263,16 @@ export default function YetiMemesSection() {
           </div>
         </div>
 
-        {/* Mobile Layout (sm) - 2 Columns */}
+        {/* Mobile Layout (sm) - 2 Columns - Optimized for iOS */}
         <div className="block md:hidden">
           <div className="grid grid-cols-2 gap-3 overflow-hidden">
-            {memes.slice(0, 15).map((meme, index) => (
+            {memes.slice(0, isIOS ? 8 : 15).map((meme, index) => (
               <motion.div
                 key={meme.id}
                 className={`group cursor-pointer ${
                   index === 0 ? 'col-span-2' : 'col-span-1'
                 }`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                {...animationSettings}
                 onClick={() => setActiveMeme(index)}
               >
                 <div className="relative bg-gradient-to-br from-emerald-500/10 to-teal-500/10 backdrop-blur-md rounded-xl border border-emerald-400/30 overflow-hidden transition-all duration-300 h-48 hover:border-emerald-300/60 hover:shadow-lg hover:shadow-emerald-500/20">
@@ -268,15 +283,21 @@ export default function YetiMemesSection() {
                         alt="YETI Meme"
                         fill
                         className="object-cover rounded-lg"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 50vw, 25vw"
                       />
                     ) : (
                       <video 
                         src={meme.video}
                         className="w-full h-full object-cover rounded-lg"
-                        autoPlay
+                        autoPlay={false}
                         muted
                         loop
                         playsInline
+                        preload="none"
+                        onError={(e) => {
+                          console.log('Video error:', e);
+                        }}
                       />
                     )}
                   </div>
