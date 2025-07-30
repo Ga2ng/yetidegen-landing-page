@@ -95,7 +95,7 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                 </div>
 
                 {/* Floating Particles - dikurangi jumlah */}
-                {[...Array(4)].map((_, i) => (
+                {/* {[...Array(4)].map((_, i) => (
                   <motion.div
                     key={i}
                     className="absolute w-1 h-1 bg-emerald-400/40 rounded-full"
@@ -117,7 +117,7 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                       transform: "translate(-50%, -50%)",
                     }}
                   />
-                ))}
+                ))} */}
               </div>
             </div>
 
