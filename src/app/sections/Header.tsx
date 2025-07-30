@@ -121,7 +121,6 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                     }}
                     loading="eager"
                     quality={85}
-                    placeholder="blur"
                     onLoad={() => setIsImageLoading(false)}
                     onError={(e) => {
                       console.log('Image failed to load:', e);
