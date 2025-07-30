@@ -145,7 +145,6 @@ export default function YetiMemesSection() {
                         preload="none"
                         onError={(e) => {
                           console.log('Video error:', e);
-                          // Log error untuk debugging
                         }}
                       />
                     )}

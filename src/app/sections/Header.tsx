@@ -11,6 +11,7 @@ interface HeaderProps {
 
 export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) {
   const [isIOS, setIsIOS] = useState(false);
+  const [isImageLoading, setIsImageLoading] = useState(true);
   
   // Detect iOS device
   useEffect(() => {
@@ -99,6 +100,13 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
 
                 {/* Main Mascot Image - Optimized */}
                 <div className="relative w-full h-full z-10">
+                  {isImageLoading && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-full">
+                      <div className="text-emerald-400 text-lg font-semibold animate-pulse">
+                        Loading...
+                      </div>
+                    </div>
+                  )}
                   <Image
                     src="/assets/gif/yeti3.gif"
                     alt="YETI Mascot"
@@ -106,7 +114,7 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                     className="object-contain drop-shadow-2xl"
                     priority
                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 35vw, 25vw"
-                    style={{ 
+                    style={{
                       filter: "drop-shadow(0 0 20px rgba(15, 196, 154, 0.2))",
                       willChange: "auto",
                       transform: "translateZ(0)"
@@ -114,9 +122,10 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                     loading="eager"
                     quality={85}
                     placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                    onLoad={() => setIsImageLoading(false)}
                     onError={(e) => {
                       console.log('Image failed to load:', e);
+                      setIsImageLoading(false);
                       // Fallback to static image if GIF fails
                     }}
                   />
