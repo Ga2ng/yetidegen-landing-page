@@ -7,7 +7,6 @@ interface Meme {
   id: number;
   video: string;
   fallback?: string;
-  poster?: string;
   isImage?: boolean;
 }
 
@@ -43,14 +42,12 @@ export default function YetiMemesSection() {
     { 
       id: 1, 
       video: "/assets/yetivid8.webm",
-      fallback: "/assets/yetivid8.mp4",
-      poster: "/assets/images/yeti1_poster.jpg"
+      fallback: "/assets/yetivid8.mp4"
     },
     { 
       id: 2, 
       video: "/assets/PATAPIM.webm",
-      fallback: "/assets/PATAPIM.mp4",
-      poster: "/assets/images/patapim_poster.jpg"
+      fallback: "/assets/PATAPIM.mp4"
     },
     { 
       id: 3, 
@@ -60,14 +57,12 @@ export default function YetiMemesSection() {
     { 
       id: 4, 
       video: "/assets/coin.webm",
-      fallback: "/assets/coin.mp4",
-      poster: "/assets/images/coin_poster.jpg"
+      fallback: "/assets/coin.mp4"
     },
     { 
       id: 5, 
       video: "/assets/pepe.webm",
-      fallback: "/assets/pepe.mp4",
-      poster: "/assets/images/pepe_poster.jpg"
+      fallback: "/assets/pepe.mp4"
     },
     { 
       id: 6, 
@@ -77,14 +72,12 @@ export default function YetiMemesSection() {
     { 
       id: 7, 
       video: "/assets/pump_it.webm",
-      fallback: "/assets/pump_it.mp4",
-      poster: "/assets/images/pump_it_poster.jpg"
+      fallback: "/assets/pump_it.mp4"
     },
     { 
       id: 8, 
       video: "/assets/soldiers.webm",
-      fallback: "/assets/soldiers.mp4",
-      poster: "/assets/images/soldiers_poster.jpg"
+      fallback: "/assets/soldiers.mp4"
     },
     { 
       id: 9, 
@@ -94,8 +87,7 @@ export default function YetiMemesSection() {
     { 
       id: 10, 
       video: "/assets/one_of.webm",
-      fallback: "/assets/one_of.mp4",
-      poster: "/assets/images/one_of_poster.jpg"
+      fallback: "/assets/one_of.mp4"
     },
     { 
       id: 11, 
@@ -105,20 +97,17 @@ export default function YetiMemesSection() {
     { 
       id: 12, 
       video: "/assets/yetivid1.webm",
-      fallback: "/assets/yetivid1.mp4",
-      poster: "/assets/images/yeti1_poster.jpg"
+      fallback: "/assets/yetivid1.mp4"
     },
     { 
       id: 13, 
       video: "/assets/yetivid2.webm",
-      fallback: "/assets/yetivid2.mp4",
-      poster: "/assets/images/yeti2_poster.jpg"
+      fallback: "/assets/yetivid2.mp4"
     },
     { 
       id: 14, 
       video: "/assets/yetivid3.webm",
-      fallback: "/assets/yetivid3.mp4",
-      poster: "/assets/images/yeti3_poster.jpg"
+      fallback: "/assets/yetivid3.mp4"
     },
     { 
       id: 15, 
@@ -175,7 +164,6 @@ export default function YetiMemesSection() {
         loop
         playsInline
         preload="metadata"
-        poster={meme.poster}
         controls={isIOS || isSafari || videoErrors.has(meme.id)}
         onError={(e) => handleVideoError(meme.id, e)}
         onLoadStart={() => {
