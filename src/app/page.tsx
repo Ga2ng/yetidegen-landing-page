@@ -111,7 +111,7 @@ export default function Home() {
       <YetiMemesSection />
 
       {/* Section 5 - How to Buy Section */}
-      {/* <HowToBuySection /> */}
+      <HowToBuySection />
 
       {/* Section 6 - Partners Section */}
       {/* <PartnersSection /> */}
@@ -120,7 +120,7 @@ export default function Home() {
       {/* <RoadmapSection /> */}
 
       {/* Section 8 - FAQ Section */}
-      {/* <FAQSection /> */}
+      <FAQSection />
 
       {/* Footer */}
       {/* <Footer /> */}

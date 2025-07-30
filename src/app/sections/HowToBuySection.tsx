@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { WalletWidget } from "../components";
 
 export default function HowToBuySection() {
   const [activeStep, setActiveStep] = useState(0);
@@ -8,45 +9,88 @@ export default function HowToBuySection() {
   const steps = [
     {
       id: 1,
-      title: "Create a wallet",
-      description: "Visit phantom.app and follow the simple steps to create a new account with the Phantom app or browser extension.",
-      icon: "👛",
-      color: "from-blue-500 to-cyan-500"
+      title: "CREATE A WALLET",
+      description: "VISIT PHANTOM.APP AND FOLLOW THE SIMPLE STEPS TO CREATE A NEW ACCOUNT WITH THE PHANTOM APP OR BROWSER EXTENSION.",
+      highlight: "PHANTOM.APP",
+      color: "from-emerald-500/20 to-teal-500/20",
+      borderColor: "border-emerald-400/50"
     },
     {
       id: 2,
-      title: "Get some $SOL",
-      description: "Tap the BUY button in the app to purchase Solana, or deposit $SOL to your Phantom wallet from the crypto exchange of your choice.",
-      icon: "💰",
-      color: "from-green-500 to-emerald-500"
+      title: "GET SOME $SOL",
+      description: "TAP THE BUY BUTTON IN THE APP TO PURCHASE SOLANA, OR DEPOSIT $SOL TO YOUR PHANTOM WALLET FROM THE CRYPTO EXCHANGE OF YOUR CHOICE.",
+      highlight: "$SOL",
+      color: "from-emerald-400/20 to-cyan-500/20",
+      borderColor: "border-emerald-300/50"
     },
     {
       id: 3,
-      title: "Swap $YETI",
-      description: "Tap the SWAP icon in your Phantom wallet and paste the $YETI token address. Swap your $SOL for $YETI.",
-      icon: "🔄",
-      color: "from-purple-500 to-pink-500"
+      title: "SWAP $YETI",
+      description: "TAP THE SWAP ICON IN YOUR PHANTOM WALLET AND PASTE THE $YETI TOKEN ADDRESS. SWAP YOUR $SOL FOR $YETI.",
+      highlight: "$YETI",
+      color: "from-teal-500/20 to-emerald-500/20",
+      borderColor: "border-teal-400/50"
     },
     {
       id: 4,
-      title: "You are now a $YETI holder!",
-      description: "Welcome to the $YETI Army!",
-      icon: "🎉",
-      color: "from-emerald-500 to-teal-500"
+      title: "YOU ARE NOW A $YETI HOLDER!",
+      description: "WELCOME TO THE $YETI ARMY!",
+      highlight: "$YETI ARMY",
+      color: "from-emerald-600/20 to-teal-600/20",
+      borderColor: "border-emerald-500/50"
     }
   ];
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50 overflow-hidden">
-      {/* Background Elements */}
+    <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-emerald-900 overflow-hidden">
+      {/* Galaxy Background Elements - Optimized */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-20 w-64 h-64 bg-emerald-200/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-teal-200/30 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-100/20 rounded-full blur-3xl" />
+        {/* Subtle Grid Pattern */}
+        <div 
+          className="absolute inset-0 w-full h-full opacity-10"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(15, 196, 154, 0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(15, 196, 154, 0.3) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px',
+            backgroundPosition: '0 0, 0 0'
+          }}
+        />
+        
+        {/* Optimized Background Blobs - Reduced Count */}
+        <div className="absolute top-20 left-20 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-teal-500/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-400/3 rounded-full blur-3xl" />
+      </div>
+
+      {/* Optimized Galaxy Stars - Reduced Count for Mobile */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(4)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-emerald-400/60 rounded-full"
+            animate={{
+              y: ["100vh", "-10vh"],
+              x: [0, Math.sin(i) * 200],
+              opacity: [0, 1, 1, 0],
+              scale: [0, 1.5, 1.5, 0],
+            }}
+            transition={{
+              duration: 25 + i * 2,
+              repeat: Infinity,
+              delay: i * 1,
+              ease: "linear",
+            }}
+            style={{
+              left: `${10 + (i * 8) % 80}%`,
+            }}
+          />
+        ))}
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-20">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Header */}
           <motion.div 
             className="text-center mb-16"
@@ -55,81 +99,67 @@ export default function HowToBuySection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+            <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-emerald-100 to-emerald-300 bg-clip-text text-transparent">
               HOW TO BUY
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-              Follow these easy steps to become a YETI holder.
+            <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto">
+              FOLLOW THESE EASY STEPS TO BECOME A YETI HOLDER.
             </p>
           </motion.div>
 
-          {/* Steps Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {steps.map((step, index) => (
-              <motion.div
-                key={step.id}
-                className="group cursor-pointer"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                onClick={() => setActiveStep(index)}
-              >
-                <div className={`relative bg-gradient-to-br ${step.color} rounded-2xl p-6 h-full text-white hover:scale-105 transition-all duration-300 ${activeStep === index ? 'ring-4 ring-emerald-300' : ''}`}>
-                  <div className="text-center">
-                    <div className="text-4xl mb-4">{step.icon}</div>
-                    <div className="text-2xl font-bold mb-2">{step.id}</div>
-                    <h3 className="text-lg font-semibold mb-3">{step.title}</h3>
-                    <p className="text-sm opacity-90 leading-relaxed">{step.description}</p>
+          {/* Main Content Grid - Steps + Wallet Widget */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            {/* Left Side - Steps */}
+            <div className="space-y-6">
+              {steps.map((step, index) => (
+                <motion.div
+                  key={step.id}
+                  className="group cursor-pointer"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  onClick={() => setActiveStep(index)}
+                >
+                  <div className={`relative bg-gradient-to-br ${step.color} backdrop-blur-md rounded-2xl border ${step.borderColor} p-6 text-white hover:scale-105 transition-all duration-300 ${activeStep === index ? 'ring-2 ring-emerald-300 shadow-lg shadow-emerald-500/25' : ''}`}>
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0">
+                        <div className="w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center text-xl font-bold text-emerald-300">
+                          {step.id}
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold mb-2 text-emerald-200">{step.title}</h3>
+                        <p className="text-sm text-slate-300 leading-relaxed">
+                          {step.description.split(step.highlight).map((part, i, arr) => (
+                            <span key={i}>
+                              {part}
+                              {i < arr.length - 1 && (
+                                <span className="text-emerald-300 font-semibold">{step.highlight}</span>
+                              )}
+                            </span>
+                          ))}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  
-                  {/* Step indicator */}
-                  <div className="absolute top-4 right-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-sm font-bold">
-                    {step.id}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Right Side - Price Chart Widget */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="lg:sticky lg:top-8"
+            >
+              <WalletWidget />
+            </motion.div>
           </div>
 
-          {/* Detailed Step View */}
-          <motion.div 
-            className="bg-white rounded-3xl shadow-xl border border-emerald-100 p-8"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="text-center mb-8">
-              <div className="text-6xl mb-4">{steps[activeStep].icon}</div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-2">
-                Step {steps[activeStep].id}: {steps[activeStep].title}
-              </h3>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                {steps[activeStep].description}
-              </p>
-            </div>
-
-            {/* Action buttons */}
-            <div className="flex justify-center gap-4">
-              <motion.button
-                className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get Phantom Wallet
-              </motion.button>
-              <motion.button
-                className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Buy SOL
-              </motion.button>
-            </div>
-          </motion.div>
-
-          {/* Contract Address */}
+          {/* Contract Address - Elegant Design */}
           <motion.div 
             className="mt-16 text-center"
             initial={{ opacity: 0, y: 30 }}
@@ -137,13 +167,43 @@ export default function HowToBuySection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">
-              Contract Address
+            <h3 className="text-2xl font-bold text-emerald-200 mb-6">
+              CONTRACT ADDRESS
             </h3>
-            <div className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 backdrop-blur-md rounded-2xl border border-emerald-400/30 p-6 max-w-2xl mx-auto">
-              <code className="text-sm md:text-base text-emerald-600 font-mono break-all">
+            <div className="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 backdrop-blur-md rounded-2xl border border-emerald-400/30 p-6 max-w-2xl mx-auto">
+              <code className="text-sm md:text-base text-emerald-300 font-mono break-all">
                 FuyeX8cpctBwQVDFYgKxYh1JgiXCkK9g4RBVCXm4pump
               </code>
+            </div>
+          </motion.div>
+
+          {/* Action Buttons */}
+          <motion.div 
+            className="mt-12 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <motion.a
+                href="https://phantom.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                GET PHANTOM WALLET
+              </motion.a>
+              {/* <motion.a
+                href="#buy"
+                className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                BUY SOL
+              </motion.a> */}
             </div>
           </motion.div>
         </div>

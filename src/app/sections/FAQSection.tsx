@@ -116,7 +116,7 @@ export default function FAQSection() {
           </div>
 
           {/* Contact Section */}
-          <motion.div 
+          {/* <motion.div 
             className="mt-16 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -142,10 +142,10 @@ export default function FAQSection() {
                 </motion.button>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Quick Stats */}
-          <motion.div 
+          {/* <motion.div 
             className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -164,7 +164,7 @@ export default function FAQSection() {
               <div className="text-3xl font-bold text-emerald-400 mb-2">Transparent</div>
               <div className="text-sm text-emerald-300">Development</div>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>
