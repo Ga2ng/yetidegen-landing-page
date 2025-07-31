@@ -111,212 +111,271 @@ export default function MeetYetiSection() {
       <div className="relative z-10 container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
-          <motion.div 
-            className="text-center mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: isMobile ? 0.3 : 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white via-emerald-100 to-emerald-300 bg-clip-text text-transparent">
-              MEET YETI
-            </h2>
-            <p className="text-2xl md:text-3xl text-emerald-300 max-w-4xl mx-auto leading-relaxed font-medium">
-              the fastest-growing degen blogger
-            </p>
-          </motion.div>
+          {isMobile ? (
+            <div 
+              className="text-center mb-20"
+              style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.6s ease-in-out' }}
+            >
+              <h2 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white via-emerald-100 to-emerald-300 bg-clip-text text-transparent">
+                MEET YETI
+              </h2>
+              <p className="text-2xl md:text-3xl text-emerald-300 max-w-4xl mx-auto leading-relaxed font-medium">
+                the fastest-growing degen blogger
+              </p>
+            </div>
+          ) : (
+            <motion.div 
+              className="text-center mb-20"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white via-emerald-100 to-emerald-300 bg-clip-text text-transparent">
+                MEET YETI
+              </h2>
+              <p className="text-2xl md:text-3xl text-emerald-300 max-w-4xl mx-auto leading-relaxed font-medium">
+                the fastest-growing degen blogger
+              </p>
+            </motion.div>
+          )}
 
           {/* Hero Section with GIF/Images */}
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
             {/* Left Column - Text Content */}
-            <motion.div 
-              className="space-y-8 order-2 lg:order-1"
-              initial={{ opacity: 0, x: isMobile ? 0 : -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0 : 0.1 }}
-              viewport={{ once: true }}
-            >
-              <div className="space-y-6">
-                <p className="text-lg md:text-xl text-emerald-200 leading-relaxed">
-                  It started on social media—a degen character making noise, taking risks, and catching fire fast. 
-                  Now he's the most viral mascot around, with <span className="font-bold text-[#0FC49A]">billions of views</span> and 
-                  <span className="font-bold text-[#0FC49A]"> thousands of followers</span> across platforms.
-                </p>
-                
-                <p className="text-lg md:text-xl text-emerald-200 leading-relaxed">
-                  But YETI's not alone. Behind him is the first tokenized community of yetis—a growing crew that gets the joke, 
-                  loves the chaos, and believes in where this is going.
-                </p>
-                
-                <p className="text-lg md:text-xl text-emerald-200 leading-relaxed">
-                  It's a full-on community takeover, built by the people, for the culture. And we support the artists making it all come to life.
-                </p>
-                
-                <div className="pt-6">
-                  <p className="text-2xl md:text-3xl font-semibold text-white">
-                    It's simple. If you know, you know.
+            {isMobile ? (
+              <div 
+                className="space-y-8 order-2 lg:order-1"
+                style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.6s ease-in-out 0.1s' }}
+              >
+                <div className="space-y-6">
+                  <p className="text-lg md:text-xl text-emerald-200 leading-relaxed">
+                    It started on social media—a degen character making noise, taking risks, and catching fire fast. 
+                    Now he's the most viral mascot around, with <span className="font-bold text-[#0FC49A]">billions of views</span> and 
+                    <span className="font-bold text-[#0FC49A]"> thousands of followers</span> across platforms.
                   </p>
-                  <p className="text-2xl md:text-3xl font-bold text-[#0FC49A] mt-3">
-                    This is YETI.
+                  
+                  <p className="text-lg md:text-xl text-emerald-200 leading-relaxed">
+                    But YETI's not alone. Behind him is the first tokenized community of yetis—a growing crew that gets the joke, 
+                    loves the chaos, and believes in where this is going.
                   </p>
+                  
+                  <p className="text-lg md:text-xl text-emerald-200 leading-relaxed">
+                    It's a full-on community takeover, built by the people, for the culture. And we support the artists making it all come to life.
+                  </p>
+                  
+                  <div className="pt-6">
+                    <p className="text-2xl md:text-3xl font-semibold text-white">
+                      It's simple. If you know, you know.
+                    </p>
+                    <p className="text-2xl md:text-3xl font-bold text-[#0FC49A] mt-3">
+                      This is YETI.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </motion.div>
+            ) : (
+              <motion.div 
+                className="space-y-8 order-2 lg:order-1"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="space-y-6">
+                  <p className="text-lg md:text-xl text-emerald-200 leading-relaxed">
+                    It started on social media—a degen character making noise, taking risks, and catching fire fast. 
+                    Now he's the most viral mascot around, with <span className="font-bold text-[#0FC49A]">billions of views</span> and 
+                    <span className="font-bold text-[#0FC49A]"> thousands of followers</span> across platforms.
+                  </p>
+                  
+                  <p className="text-lg md:text-xl text-emerald-200 leading-relaxed">
+                    But YETI's not alone. Behind him is the first tokenized community of yetis—a growing crew that gets the joke, 
+                    loves the chaos, and believes in where this is going.
+                  </p>
+                  
+                  <p className="text-lg md:text-xl text-emerald-200 leading-relaxed">
+                    It's a full-on community takeover, built by the people, for the culture. And we support the artists making it all come to life.
+                  </p>
+                  
+                  <div className="pt-6">
+                    <p className="text-2xl md:text-3xl font-semibold text-white">
+                      It's simple. If you know, you know.
+                    </p>
+                    <p className="text-2xl md:text-3xl font-bold text-[#0FC49A] mt-3">
+                      This is YETI.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            )}
 
             {/* Right Column - Hero GIF/Images */}
-            <motion.div 
-              className="relative order-1 lg:order-2"
-              initial={{ opacity: 0, x: isMobile ? 0 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0 : 0.2 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative h-[400px] md:h-[500px] lg:h-[500px] flex items-center justify-center">
-                {/* Mobile Layout - 2 webp images + 1 gif */}
-                {isMobile ? (
-                  <>
-                    {/* Card 1 - Top Left - Webp */}
-                    <div className="absolute top-0 left-0 w-48 h-48">
-                      <div className="relative w-full h-full bg-gradient-to-br from-[#0FC49A]/8 to-emerald-500/8 rounded-xl border border-[#0FC49A]/40 overflow-hidden">
-                        <Image 
-                          src="/assets/images/yeti7.webp"
-                          alt="YETI Card 1"
-                          fill
-                          className="object-cover"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#0FC49A]/10 to-transparent" />
-                      </div>
-                    </div>
-
-                    {/* Card 2 - Center Right - GIF */}
-                    <div className="absolute top-12 right-0 left-[180px] w-48 h-48">
-                      <LazyGifCard
-                        src="/assets/gif/yeti5.gif"
-                        alt="YETI Card 2"
-                        borderColor="border-emerald-400/40"
-                        gradientFrom="from-emerald-400/8"
-                        gradientTo="to-[#0FC49A]/8"
-                        overlayColor="from-emerald-400/10"
-                        initialAnimation={{ x: 0, y: 0, rotate: 0 }}
-                        delay={0}
-                        duration={0}
-                      />
-                    </div>
-
-                    {/* Card 3 - Bottom Left - Webp */}
-                    <div className="absolute bottom-0 left-6 w-48 h-48">
-                      <div className="relative w-full h-full bg-gradient-to-br from-emerald-300/8 to-[#0FC49A]/8 rounded-xl border border-emerald-300/40 overflow-hidden">
-                        <Image 
-                          src="/assets/images/yeti8.webp"
-                          alt="YETI Card 3"
-                          fill
-                          className="object-cover"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-300/10 to-transparent" />
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    {/* Desktop Layout - All GIFs with proper positioning */}
-                    {/* Card 1 - Top Left Zig */}
-                    <div className="absolute top-0 left-0 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
-                      <LazyGifCard
-                        src="/assets/gif/yeti4.gif"
+            {isMobile ? (
+              <div 
+                className="relative order-1 lg:order-2"
+                style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.6s ease-in-out 0.2s' }}
+              >
+                <div className="relative h-[400px] md:h-[500px] lg:h-[500px] flex items-center justify-center">
+                  {/* Mobile Layout - 2 webp images + 1 gif */}
+                  {/* Card 1 - Top Left - Webp */}
+                  <div className="absolute top-0 left-0 w-48 h-48">
+                    <div className="relative w-full h-full bg-gradient-to-br from-[#0FC49A]/8 to-emerald-500/8 rounded-xl border border-[#0FC49A]/40 overflow-hidden">
+                      <Image 
+                        src="/assets/images/yeti7.webp"
                         alt="YETI Card 1"
-                        borderColor="border-[#0FC49A]/40"
-                        gradientFrom="from-[#0FC49A]/8"
-                        gradientTo="to-emerald-500/8"
-                        overlayColor="from-[#0FC49A]/10"
-                        initialAnimation={{ x: -50, y: -30, rotate: -10 }}
-                        delay={0.3}
-                        duration={0.6}
+                        fill
+                        className="object-cover"
+                        loading="lazy"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#0FC49A]/10 to-transparent" />
                     </div>
+                  </div>
 
-                    {/* Card 2 - Center Right Zag */}
-                    <div className="absolute top-12 md:top-16 right-0 left-[180px] md:left-[200px] lg:left-[250px] w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
-                      <LazyGifCard
-                        src="/assets/gif/yeti5.gif"
-                        alt="YETI Card 2"
-                        borderColor="border-emerald-400/40"
-                        gradientFrom="from-emerald-400/8"
-                        gradientTo="to-[#0FC49A]/8"
-                        overlayColor="from-emerald-400/10"
-                        initialAnimation={{ x: 50, y: -20, rotate: 15 }}
-                        delay={0.4}
-                        duration={0.6}
-                      />
-                    </div>
+                  {/* Card 2 - Center Right - GIF */}
+                  <div className="absolute top-12 right-0 left-[180px] w-48 h-48">
+                    <LazyGifCard
+                      src="/assets/gif/yeti5.gif"
+                      alt="YETI Card 2"
+                      borderColor="border-emerald-400/40"
+                      gradientFrom="from-emerald-400/8"
+                      gradientTo="to-[#0FC49A]/8"
+                      overlayColor="from-emerald-400/10"
+                      initialAnimation={{ x: 0, y: 0, rotate: 0 }}
+                      delay={0}
+                      duration={0}
+                    />
+                  </div>
 
-                    {/* Card 3 - Bottom Left Zig */}
-                    <div className="absolute bottom-0 left-6 md:left-8 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
-                      <LazyGifCard
-                        src="/assets/gif/yeti6.gif"
+                  {/* Card 3 - Bottom Left - Webp */}
+                  <div className="absolute bottom-0 left-6 w-48 h-48">
+                    <div className="relative w-full h-full bg-gradient-to-br from-emerald-300/8 to-[#0FC49A]/8 rounded-xl border border-emerald-300/40 overflow-hidden">
+                      <Image 
+                        src="/assets/images/yeti8.webp"
                         alt="YETI Card 3"
-                        borderColor="border-emerald-300/40"
-                        gradientFrom="from-emerald-300/8"
-                        gradientTo="to-[#0FC49A]/8"
-                        overlayColor="from-emerald-300/10"
-                        initialAnimation={{ x: -40, y: 50, rotate: -15 }}
-                        delay={0.5}
-                        duration={0.6}
+                        fill
+                        className="object-cover"
+                        loading="lazy"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-300/10 to-transparent" />
                     </div>
-                  </>
-                )}
-
-                {/* Connection Lines - Disabled for mobile */}
-                {isLoaded && !isMobile && (
-                  <svg className="absolute inset-0 w-full h-full pointer-events-none">
-                    <motion.path
-                      d="M 120 90 Q 240 60 360 120"
-                      stroke="#0FC49A"
-                      strokeWidth="1.5"
-                      fill="none"
-                      opacity="0.2"
-                      initial={{ pathLength: 0 }}
-                      whileInView={{ pathLength: 1 }}
-                      transition={{ duration: 1, delay: 0.8 }}
-                    />
-                    <motion.path
-                      d="M 360 120 Q 240 180 120 270"
-                      stroke="emerald-400"
-                      strokeWidth="1.5"
-                      fill="none"
-                      opacity="0.2"
-                      initial={{ pathLength: 0 }}
-                      whileInView={{ pathLength: 1 }}
-                      transition={{ duration: 1, delay: 1 }}
-                    />
-                  </svg>
-                )}
+                  </div>
+                </div>
               </div>
-            </motion.div>
+            ) : (
+              <motion.div 
+                className="relative order-1 lg:order-2"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <div className="relative h-[400px] md:h-[500px] lg:h-[500px] flex items-center justify-center">
+                  {/* Desktop Layout - All GIFs with proper positioning */}
+                  {/* Card 1 - Top Left Zig */}
+                  <div className="absolute top-0 left-0 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
+                    <LazyGifCard
+                      src="/assets/gif/yeti4.gif"
+                      alt="YETI Card 1"
+                      borderColor="border-[#0FC49A]/40"
+                      gradientFrom="from-[#0FC49A]/8"
+                      gradientTo="to-emerald-500/8"
+                      overlayColor="from-[#0FC49A]/10"
+                      initialAnimation={{ x: -50, y: -30, rotate: -10 }}
+                      delay={0.3}
+                      duration={0.6}
+                    />
+                  </div>
+
+                  {/* Card 2 - Center Right Zag */}
+                  <div className="absolute top-12 md:top-16 right-0 left-[180px] md:left-[200px] lg:left-[250px] w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
+                    <LazyGifCard
+                      src="/assets/gif/yeti5.gif"
+                      alt="YETI Card 2"
+                      borderColor="border-emerald-400/40"
+                      gradientFrom="from-emerald-400/8"
+                      gradientTo="to-[#0FC49A]/8"
+                      overlayColor="from-emerald-400/10"
+                      initialAnimation={{ x: 50, y: -20, rotate: 15 }}
+                      delay={0.4}
+                      duration={0.6}
+                    />
+                  </div>
+
+                  {/* Card 3 - Bottom Left Zig */}
+                  <div className="absolute bottom-0 left-6 md:left-8 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
+                    <LazyGifCard
+                      src="/assets/gif/yeti6.gif"
+                      alt="YETI Card 3"
+                      borderColor="border-emerald-300/40"
+                      gradientFrom="from-emerald-300/8"
+                      gradientTo="to-[#0FC49A]/8"
+                      overlayColor="from-emerald-300/10"
+                      initialAnimation={{ x: -40, y: 50, rotate: -15 }}
+                      delay={0.5}
+                      duration={0.6}
+                    />
+                  </div>
+
+                  {/* Connection Lines - Disabled for mobile */}
+                  {isLoaded && (
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                      <motion.path
+                        d="M 120 90 Q 240 60 360 120"
+                        stroke="#0FC49A"
+                        strokeWidth="1.5"
+                        fill="none"
+                        opacity="0.2"
+                        initial={{ pathLength: 0 }}
+                        whileInView={{ pathLength: 1 }}
+                        transition={{ duration: 1, delay: 0.8 }}
+                      />
+                      <motion.path
+                        d="M 360 120 Q 240 180 120 270"
+                        stroke="emerald-400"
+                        strokeWidth="1.5"
+                        fill="none"
+                        opacity="0.2"
+                        initial={{ pathLength: 0 }}
+                        whileInView={{ pathLength: 1 }}
+                        transition={{ duration: 1, delay: 1 }}
+                      />
+                    </svg>
+                  )}
+                </div>
+              </motion.div>
+            )}
           </div>
           
           {/* Bottom CTA */}
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: isMobile ? 0.3 : 0.6, delay: isMobile ? 0 : 0.3 }}
-            viewport={{ once: true }}
-          >
-            <motion.button 
-              className="bg-gradient-to-r from-[#0FC49A] to-emerald-500 text-white px-12 py-6 rounded-full text-xl font-bold shadow-xl hover:shadow-[#0FC49A]/20 transition-all duration-300 relative overflow-hidden group"
-              whileHover={!isMobile ? { scale: 1.03, y: -2 } : {}}
-              whileTap={!isMobile ? { scale: 0.97 } : {}}
+          {isMobile ? (
+            <div 
+              className="text-center"
+              style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.6s ease-in-out 0.3s' }}
             >
-              {/* Button background animation - Disabled for mobile */}
-              {!isMobile && (
+              <button className="bg-gradient-to-r from-[#0FC49A] to-emerald-500 text-white px-12 py-6 rounded-full text-xl font-bold shadow-xl transition-all duration-300 relative overflow-hidden group">
+                <span className="relative z-10">Join the Community</span>
+              </button>
+            </div>
+          ) : (
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <motion.button 
+                className="bg-gradient-to-r from-[#0FC49A] to-emerald-500 text-white px-12 py-6 rounded-full text-xl font-bold shadow-xl hover:shadow-[#0FC49A]/20 transition-all duration-300 relative overflow-hidden group"
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                {/* Button background animation - Disabled for mobile */}
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-[#0FC49A] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              )}
-              <span className="relative z-10">Join the Community</span>
-            </motion.button>
-          </motion.div>
+                <span className="relative z-10">Join the Community</span>
+              </motion.button>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>

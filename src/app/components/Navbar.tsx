@@ -43,13 +43,13 @@ export default function Navbar() {
             className="flex items-center space-x-3"
           >
             <div className="relative w-8 h-8 lg:w-10 lg:h-10">
-              <Image
+              {/* <Image
                 src="/assets/gif/yeti2.gif"
                 alt="YETI Icon"
                 fill
                 className="object-contain"
                 priority
-              />
+              /> */}
             </div>
             <span className="text-white font-bold text-lg lg:text-xl">
               $YETI

@@ -73,7 +73,7 @@ export default function YetiMemesSection() {
   const mobileMemes = [
     { 
       id: 1, 
-      video: "/assets/MAINVIDEO.webm"
+      video: "/assets/MAINVIDEO.mp4"
     },
     { 
       id: 2, 
@@ -97,7 +97,7 @@ export default function YetiMemesSection() {
     },
     { 
       id: 7, 
-      video: "/assets/pump_it.webm"
+      video: "/assets/pump_it.mp4"
     }
   ];
 

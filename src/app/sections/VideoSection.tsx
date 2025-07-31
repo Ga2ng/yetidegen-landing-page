@@ -42,7 +42,7 @@ export default function VideoSection({
           playsInline
           className="hidden md:block h-full w-full object-cover"
         >
-          <source src="/assets/MAINVIDEO.webm" type="video/webm" />
+          <source src="/assets/MAINVIDEO.mp4" type="video/mp4" />
         </video>
         
         {/* Mobile Video */}
@@ -53,7 +53,7 @@ export default function VideoSection({
           playsInline
           className="block md:hidden h-full w-full object-cover"
         >
-          <source src="/assets/PATAPIM.webm" type="video/webm" />
+          <source src="/assets/PATAPIM.mp4" type="video/mp4" />
         </video>
         
         {/* Optimized Dark Overlay */}
