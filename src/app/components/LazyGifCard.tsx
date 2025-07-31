@@ -33,43 +33,59 @@ export default function LazyGifCard({
 }: LazyGifCardProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
     // Delay untuk staggered loading
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, delay * 1000);
-    return () => clearTimeout(timer);
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, [delay]);
 
   const handleImageLoad = () => {
     setImageLoaded(true);
   };
 
+  // Disable animations for mobile
+  const shouldAnimate = !isMobile;
+
   return (
     <motion.div
       className={`relative w-full h-full rounded-2xl overflow-hidden border-4 ${borderColor} shadow-xl bg-gradient-to-br ${gradientFrom} ${gradientTo} backdrop-blur-sm ${className}`}
-      initial={{ 
+      initial={shouldAnimate ? { 
         opacity: 0, 
         x: initialAnimation.x, 
         y: initialAnimation.y, 
         rotate: initialAnimation.rotate 
-      }}
-      animate={isLoaded ? { 
+      } : { opacity: 1, x: 0, y: 0, rotate: 0 }}
+      animate={isLoaded && shouldAnimate ? { 
         opacity: 1, 
         x: 0, 
         y: 0, 
         rotate: 0 
-      } : {}}
+      } : { opacity: 1, x: 0, y: 0, rotate: 0 }}
       transition={{ 
-        duration: duration,
+        duration: shouldAnimate ? duration : 0,
         ease: "easeOut"
       }}
-      whileHover={{ 
+      whileHover={shouldAnimate ? { 
         scale: 1.02, 
         rotate: initialAnimation.rotate * 0.3,
         z: 10 
-      }}
+      } : {}}
     >
       {/* Loading placeholder */}
       {!imageLoaded && (
@@ -86,7 +102,7 @@ export default function LazyGifCard({
         onLoad={handleImageLoad}
         initial={{ opacity: 0 }}
         animate={{ opacity: imageLoaded ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: shouldAnimate ? 0.5 : 0 }}
         loading="lazy"
       />
       

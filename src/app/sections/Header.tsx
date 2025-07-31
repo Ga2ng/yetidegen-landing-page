@@ -1,5 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 interface HeaderProps {
@@ -9,6 +10,22 @@ interface HeaderProps {
 }
 
 export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-background-start via-background-mid to-background-end performance-optimized">
       <AnimatePresence>
@@ -32,17 +49,19 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                      backgroundSize: '80px 80px'
                    }} />
               
-              {/* Flowing Lines - dikurangi jumlah */}
-              <svg className="absolute inset-0 w-full h-full opacity-5" viewBox="0 0 1000 1000">
-                <motion.path
-                  d="M0,500 Q250,300 500,500 T1000,500"
-                  stroke="#0FC49A"
-                  strokeWidth="1"
-                  fill="none"
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 6, ease: "linear" }}
-                />
-              </svg>
+              {/* Flowing Lines - dikurangi jumlah - Disabled for mobile */}
+              {!isMobile && (
+                <svg className="absolute inset-0 w-full h-full opacity-5" viewBox="0 0 1000 1000">
+                  <motion.path
+                    d="M0,500 Q250,300 500,500 T1000,500"
+                    stroke="#0FC49A"
+                    strokeWidth="1"
+                    fill="none"
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 6, ease: "linear" }}
+                  />
+                </svg>
+              )}
             </div>
           </div>
 
@@ -53,27 +72,31 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
             <div className="lg:col-span-2 flex items-center justify-center p-4 sm:p-8 lg:p-16 order-1 lg:order-2 mt-16 sm:mt-12 lg:mt-0 min-h-[300px] lg:min-h-0">
               {/* Mascot Container with Enhanced Effects */}
               <div className="relative w-full max-w-sm lg:max-w-md aspect-square">
-                {/* Rotating Ring Background - dikurangi intensitas */}
-                <motion.div
-                  className="absolute inset-0 rounded-full border border-emerald-400/10"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                  style={{ transformOrigin: "center" }}
-                />
+                {/* Rotating Ring Background - dikurangi intensitas - Disabled for mobile */}
+                {!isMobile && (
+                  <motion.div
+                    className="absolute inset-0 rounded-full border border-emerald-400/10"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                    style={{ transformOrigin: "center" }}
+                  />
+                )}
 
-                {/* Pulsing Glow Effect - dikurangi intensitas */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-radial from-emerald-400/10 via-emerald-400/3 to-transparent rounded-full"
-                  animate={{
-                    scale: [1, 1.05, 1],
-                    opacity: [0.3, 0.5, 0.3],
-                  }}
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                />
+                {/* Pulsing Glow Effect - dikurangi intensitas - Disabled for mobile */}
+                {!isMobile && (
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-radial from-emerald-400/10 via-emerald-400/3 to-transparent rounded-full"
+                    animate={{
+                      scale: [1, 1.05, 1],
+                      opacity: [0.3, 0.5, 0.3],
+                    }}
+                    transition={{
+                      duration: 6,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                    }}
+                  />
+                )}
 
                 {/* Main Mascot Image - Optimized */}
                 <div className="relative w-full h-full z-10">
@@ -85,16 +108,16 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                     priority
                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 35vw, 25vw"
                     style={{ 
-                      filter: "drop-shadow(0 0 20px rgba(15, 196, 154, 0.2))",
+                      filter: isMobile ? "drop-shadow(0 0 10px rgba(15, 196, 154, 0.1))" : "drop-shadow(0 0 20px rgba(15, 196, 154, 0.2))",
                       willChange: "auto",
                       transform: "translateZ(0)"
                     }}
                     loading="eager"
-                    quality={85}
+                    quality={isMobile ? 75 : 85}
                   />
                 </div>
 
-                {/* Floating Particles - dikurangi jumlah */}
+                {/* Floating Particles - dikurangi jumlah - Disabled for mobile */}
                 {/* {[...Array(4)].map((_, i) => (
                   <motion.div
                     key={i}
@@ -135,7 +158,7 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                   {/* Welcome Badge */}
                   <div>
                     <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 backdrop-blur-sm rounded-full border border-emerald-400/30">
-                      <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                      <div className={`w-2 h-2 bg-emerald-400 rounded-full ${!isMobile ? 'animate-pulse' : ''}`} />
                       <span className="text-sm font-medium text-emerald-300 tracking-wider uppercase">
                         Welcome to the Future
                       </span>
@@ -147,10 +170,12 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                     <span className="bg-gradient-to-r from-white via-emerald-100 to-emerald-300 bg-clip-text text-transparent drop-shadow-2xl">
                       $YETI
                     </span>
-                    {/* Text Shadow Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 bg-clip-text text-transparent blur-xl scale-110 -z-10">
-                      $YETI
-                    </div>
+                    {/* Text Shadow Effect - Disabled for mobile */}
+                    {!isMobile && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 bg-clip-text text-transparent blur-xl scale-110 -z-10">
+                        $YETI
+                      </div>
+                    )}
                   </h1>
 
                   {/* Enhanced Description */}
@@ -168,23 +193,27 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                   <div className="flex flex-col sm:flex-row gap-4 items-start">
                     {/* Primary CTA Button */}
                     <motion.a
-                      href="#buy"
-                      className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/25"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.98 }}
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden rounded-2xl border-2 border-emerald-400/30 text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-emerald-400/60"
+                      whileHover={!isMobile ? { scale: 1.05 } : {}}
+                      whileTap={!isMobile ? { scale: 0.98 } : {}}
                     >
                       <span className="relative z-10 flex items-center gap-2">
                         <span>Buy $YETI Now</span>
-                        <motion.svg 
-                          className="w-5 h-5" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
-                          animate={{ x: [0, 4, 0] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5-5 5M6 12h12" />
-                        </motion.svg>
+                        {!isMobile && (
+                          <motion.svg 
+                            className="w-5 h-5" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                            animate={{ x: [0, 4, 0] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5-5 5M6 12h12" />
+                          </motion.svg>
+                        )}
                       </span>
                       <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                     </motion.a>
@@ -196,8 +225,8 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden rounded-2xl border-2 border-emerald-400/30 text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-emerald-400/60"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.98 }}
+                      whileHover={!isMobile ? { scale: 1.05 } : {}}
+                      whileTap={!isMobile ? { scale: 0.98 } : {}}
                     >
                       <span className="relative z-10 flex items-center gap-2 font-semibold text-lg">
                         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -213,60 +242,62 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
             </div>
           </div>
 
-          {/* Enhanced Ambient Effects - dikurangi intensitas */}
-          <div className="absolute inset-0 pointer-events-none z-10">
-            {/* Enhanced Gradient Orbs - dikurangi ukuran */}
-            <motion.div 
-              className="absolute top-1/4 left-1/6 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl"
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.2, 0.4, 0.2],
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            />
-            <motion.div 
-              className="absolute bottom-1/4 right-1/6 w-56 h-56 bg-teal-500/5 rounded-full blur-3xl"
-              animate={{
-                scale: [1.1, 1, 1.1],
-                opacity: [0.3, 0.5, 0.3],
-              }}
-              transition={{
-                duration: 12,
-                repeat: Infinity,
-                repeatType: "reverse",
-                delay: 3,
-              }}
-            />
+          {/* Enhanced Ambient Effects - dikurangi intensitas - Disabled for mobile */}
+          {!isMobile && (
+            <div className="absolute inset-0 pointer-events-none z-10">
+              {/* Enhanced Gradient Orbs - dikurangi ukuran */}
+              <motion.div 
+                className="absolute top-1/4 left-1/6 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl"
+                animate={{
+                  scale: [1, 1.1, 1],
+                  opacity: [0.2, 0.4, 0.2],
+                }}
+                transition={{
+                  duration: 10,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
+              <motion.div 
+                className="absolute bottom-1/4 right-1/6 w-56 h-56 bg-teal-500/5 rounded-full blur-3xl"
+                animate={{
+                  scale: [1.1, 1, 1.1],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  delay: 3,
+                }}
+              />
 
-            {/* Enhanced Floating Elements - dikurangi jumlah */}
-            <div className="absolute inset-0">
-              {[...Array(6)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-1 h-1 bg-emerald-400/30 rounded-full"
-                  animate={{
-                    y: ["100vh", "-10vh"],
-                    x: [0, Math.sin(i) * 80],
-                    opacity: [0, 1, 1, 0],
-                    scale: [0, 1, 1, 0],
-                  }}
-                  transition={{
-                    duration: 20 + i * 3,
-                    repeat: Infinity,
-                    delay: i * 2,
-                    ease: "linear",
-                  }}
-                  style={{
-                    left: `${15 + (i * 12) % 70}%`,
-                  }}
-                />
-              ))}
+              {/* Enhanced Floating Elements - dikurangi jumlah */}
+              <div className="absolute inset-0">
+                {[...Array(6)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-1 h-1 bg-emerald-400/30 rounded-full"
+                    animate={{
+                      y: ["100vh", "-10vh"],
+                      x: [0, Math.sin(i) * 80],
+                      opacity: [0, 1, 1, 0],
+                      scale: [0, 1, 1, 0],
+                    }}
+                    transition={{
+                      duration: 20 + i * 3,
+                      repeat: Infinity,
+                      delay: i * 2,
+                      ease: "linear",
+                    }}
+                    style={{
+                      left: `${15 + (i * 12) % 70}%`,
+                    }}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </main>
       </AnimatePresence>
     </div>

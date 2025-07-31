@@ -85,7 +85,7 @@ export default function YetiMemesSection() {
     },
     { 
       id: 4, 
-      video: "/assets/coin.webm"
+      video: "/assets/images/yeti10.webp"
     },
     { 
       id: 5, 
