@@ -77,7 +77,7 @@ export default function YetiMemesSection() {
     },
     { 
       id: 2, 
-      video: "/assets/PATAPIM.webm"
+      video: "/assets/images/yeti15.webp"
     },
     { 
       id: 3, 
