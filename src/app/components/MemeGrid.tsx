@@ -169,6 +169,45 @@ const MemeGrid = ({ memes, layout, onMemeClick }: MemeGridProps) => {
     return () => clearInterval(interval);
   }, []);
 
+  // Pastikan video tetap play ketika terlihat
+  useEffect(() => {
+    const ensureVideoPlay = () => {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(video => {
+        if (video.paused && isElementInViewport(video)) {
+          video.play().catch(() => {
+            // Ignore autoplay errors
+          });
+        }
+      });
+    };
+
+    const interval = setInterval(ensureVideoPlay, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Optimasi untuk format MP4
+  useEffect(() => {
+    const optimizeMP4Videos = () => {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(video => {
+        // Pastikan atribut yang benar untuk MP4
+        if (!video.hasAttribute('playsinline')) {
+          video.setAttribute('playsinline', '');
+        }
+        if (!video.hasAttribute('muted')) {
+          video.setAttribute('muted', '');
+        }
+        if (!video.hasAttribute('loop')) {
+          video.setAttribute('loop', '');
+        }
+      });
+    };
+
+    const interval = setInterval(optimizeMP4Videos, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   // Safari-specific optimizations
   useEffect(() => {
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);

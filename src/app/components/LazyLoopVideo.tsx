@@ -58,14 +58,37 @@ const LazyLoopVideo = ({ src, isMobile = false }: LazyLoopVideoProps) => {
   useEffect(() => {
     if (videoRef.current) {
       if (inView) {
-        videoRef.current.play().catch(() => {
-          // Ignore autoplay errors
-        });
+        // Pastikan video play dan tidak terstop
+        const playVideo = async () => {
+          try {
+            await videoRef.current!.play();
+          } catch (error) {
+            // Ignore autoplay errors, video akan play otomatis
+            console.log('Autoplay prevented, but video will play when visible');
+          }
+        };
+        playVideo();
       } else {
         videoRef.current.pause();
       }
     }
   }, [inView]);
+
+  // Pastikan video tetap play ketika terlihat
+  useEffect(() => {
+    if (videoRef.current && inView && shouldLoad) {
+      const checkAndPlay = () => {
+        if (videoRef.current && videoRef.current.paused && inView) {
+          videoRef.current.play().catch(() => {
+            // Ignore autoplay errors
+          });
+        }
+      };
+      
+      const interval = setInterval(checkAndPlay, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [inView, shouldLoad]);
 
   return (
     <div ref={ref} className="w-full h-full">
@@ -81,6 +104,39 @@ const LazyLoopVideo = ({ src, isMobile = false }: LazyLoopVideoProps) => {
           className="w-full h-full object-cover rounded-lg"
           onError={handleVideoError}
           onLoadedData={handleVideoLoad}
+          onPause={() => {
+            // Auto resume jika video terpause tapi masih terlihat
+            if (videoRef.current && inView) {
+              videoRef.current.play().catch(() => {
+                // Ignore autoplay errors
+              });
+            }
+          }}
+          onEnded={() => {
+            // Pastikan video loop dengan benar
+            if (videoRef.current && inView) {
+              videoRef.current.currentTime = 0;
+              videoRef.current.play().catch(() => {
+                // Ignore autoplay errors
+              });
+            }
+          }}
+          onStalled={() => {
+            // Resume video jika stalled
+            if (videoRef.current && inView) {
+              videoRef.current.play().catch(() => {
+                // Ignore autoplay errors
+              });
+            }
+          }}
+          onCanPlay={() => {
+            // Pastikan video play ketika siap
+            if (videoRef.current && inView && videoRef.current.paused) {
+              videoRef.current.play().catch(() => {
+                // Ignore autoplay errors
+              });
+            }
+          }}
         />
       )}
       

@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface VideoSectionProps {
   videoOpacity: any;
@@ -18,7 +18,53 @@ export default function VideoSection({
   scrollToTop 
 }: VideoSectionProps) {
   const [copied, setCopied] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const desktopVideoRef = useRef<HTMLVideoElement>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const coinAddress = "FuyeX8cpctBwQVDFYgKxYh1JgiXCkK9g4RBVCXm4pump";
+
+  useEffect(() => {
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  // Ensure video autoplay and loop
+  useEffect(() => {
+    const ensureVideoPlay = () => {
+      if (desktopVideoRef.current && !isMobile) {
+        if (desktopVideoRef.current.paused) {
+          desktopVideoRef.current.play().catch(() => {
+            // Ignore autoplay errors
+          });
+        }
+      }
+      
+      if (mobileVideoRef.current && isMobile) {
+        if (mobileVideoRef.current.paused) {
+          mobileVideoRef.current.play().catch(() => {
+            // Ignore autoplay errors
+          });
+        }
+      }
+    };
+
+    // Check every 2 seconds to ensure video is playing
+    const interval = setInterval(ensureVideoPlay, 2000);
+    
+    // Initial play
+    ensureVideoPlay();
+    
+    return () => clearInterval(interval);
+  }, [isMobile]);
 
   const copyToClipboard = async () => {
     try {
@@ -36,22 +82,90 @@ export default function VideoSection({
       <div className="absolute inset-0">
         {/* Desktop Video */}
         <video
+          ref={desktopVideoRef}
           autoPlay
           loop
           muted
           playsInline
           className="hidden md:block h-full w-full object-cover"
+          onPause={() => {
+            // Auto resume if paused
+            if (desktopVideoRef.current && !isMobile) {
+              desktopVideoRef.current.play().catch(() => {
+                // Ignore autoplay errors
+              });
+            }
+          }}
+          onEnded={() => {
+            // Ensure infinite loop
+            if (desktopVideoRef.current && !isMobile) {
+              desktopVideoRef.current.currentTime = 0;
+              desktopVideoRef.current.play().catch(() => {
+                // Ignore autoplay errors
+              });
+            }
+          }}
+          onStalled={() => {
+            // Resume if stalled
+            if (desktopVideoRef.current && !isMobile) {
+              desktopVideoRef.current.play().catch(() => {
+                // Ignore autoplay errors
+              });
+            }
+          }}
+          onCanPlay={() => {
+            // Ensure play when ready
+            if (desktopVideoRef.current && !isMobile && desktopVideoRef.current.paused) {
+              desktopVideoRef.current.play().catch(() => {
+                // Ignore autoplay errors
+              });
+            }
+          }}
         >
           <source src="/assets/MAINVIDEO.mp4" type="video/mp4" />
         </video>
         
         {/* Mobile Video */}
         <video
+          ref={mobileVideoRef}
           autoPlay
           loop
           muted
           playsInline
           className="block md:hidden h-full w-full object-cover"
+          onPause={() => {
+            // Auto resume if paused
+            if (mobileVideoRef.current && isMobile) {
+              mobileVideoRef.current.play().catch(() => {
+                // Ignore autoplay errors
+              });
+            }
+          }}
+          onEnded={() => {
+            // Ensure infinite loop
+            if (mobileVideoRef.current && isMobile) {
+              mobileVideoRef.current.currentTime = 0;
+              mobileVideoRef.current.play().catch(() => {
+                // Ignore autoplay errors
+              });
+            }
+          }}
+          onStalled={() => {
+            // Resume if stalled
+            if (mobileVideoRef.current && isMobile) {
+              mobileVideoRef.current.play().catch(() => {
+                // Ignore autoplay errors
+              });
+            }
+          }}
+          onCanPlay={() => {
+            // Ensure play when ready
+            if (mobileVideoRef.current && isMobile && mobileVideoRef.current.paused) {
+              mobileVideoRef.current.play().catch(() => {
+                // Ignore autoplay errors
+              });
+            }
+          }}
         >
           <source src="/assets/PATAPIM.mp4" type="video/mp4" />
         </video>

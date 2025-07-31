@@ -9,11 +9,11 @@ export default function YetiMemesSection() {
   const memes = [
     { 
       id: 1, 
-      video: "/assets/yetivid8.webm"
+      video: "/assets/yetivid8.mp4"
     },
     { 
       id: 2, 
-      video: "/assets/PATAPIM.webm"
+      video: "/assets/PATAPIM.mp4"
     },
     { 
       id: 3, 
@@ -21,11 +21,11 @@ export default function YetiMemesSection() {
     },
     { 
       id: 4, 
-      video: "/assets/coin.webm"
+      video: "/assets/coin.mp4"
     },
     { 
       id: 5, 
-      video: "/assets/pepe.webm"
+      video: "/assets/pepe.mp4"
     },
     { 
       id: 6, 
@@ -33,11 +33,11 @@ export default function YetiMemesSection() {
     },
     { 
       id: 7, 
-      video: "/assets/pump_it.webm"
+      video: "/assets/pump_it.mp4"
     },
     { 
       id: 8, 
-      video: "/assets/soldiers.webm"
+      video: "/assets/soldiers.mp4"
     },
     { 
       id: 9, 
@@ -45,7 +45,7 @@ export default function YetiMemesSection() {
     },
     { 
       id: 10, 
-      video: "/assets/one_of.webm"
+      video: "/assets/one_of.mp4"
     },
     { 
       id: 11, 
@@ -53,15 +53,15 @@ export default function YetiMemesSection() {
     },
     { 
       id: 12, 
-      video: "/assets/yetivid1.webm"
+      video: "/assets/yetivid1.mp4"
     },
     { 
       id: 13, 
-      video: "/assets/yetivid2.webm"
+      video: "/assets/yetivid2.mp4"
     },
     { 
       id: 14, 
-      video: "/assets/yetivid3.webm"
+      video: "/assets/yetivid3.mp4"
     },
     { 
       id: 15, 
@@ -69,7 +69,7 @@ export default function YetiMemesSection() {
     }
   ];
 
-  // Mobile memes dengan MAINVIDEO.webm sebagai card pertama
+  // Mobile memes dengan format yang kompatibel dengan Safari
   const mobileMemes = [
     { 
       id: 1, 
@@ -101,6 +101,70 @@ export default function YetiMemesSection() {
     }
   ];
 
+  // Desktop memes dengan format yang optimal
+  const desktopMemes = [
+    { 
+      id: 1, 
+      video: "/assets/yetivid8.mp4"
+    },
+    { 
+      id: 2, 
+      video: "/assets/PATAPIM.mp4"
+    },
+    { 
+      id: 3, 
+      video: "/assets/images/yeti7.webp"
+    },
+    { 
+      id: 4, 
+      video: "/assets/coin.mp4"
+    },
+    { 
+      id: 5, 
+      video: "/assets/pepe.mp4"
+    },
+    { 
+      id: 6, 
+      video: "/assets/images/yeti8.webp"
+    },
+    { 
+      id: 7, 
+      video: "/assets/pump_it.mp4"
+    },
+    { 
+      id: 8, 
+      video: "/assets/soldiers.mp4"
+    },
+    { 
+      id: 9, 
+      video: "/assets/images/yeti9.webp"
+    },
+    { 
+      id: 10, 
+      video: "/assets/one_of.mp4"
+    },
+    { 
+      id: 11, 
+      video: "/assets/images/yeti10.webp"
+    },
+    { 
+      id: 12, 
+      video: "/assets/yetivid1.mp4"
+    },
+    { 
+      id: 13, 
+      video: "/assets/yetivid2.mp4"
+    },
+    { 
+      id: 14, 
+      video: "/assets/yetivid3.mp4"
+    },
+    { 
+      id: 15, 
+      video: "/assets/images/yeti11.webp"
+    }
+  ];
+
   const handleMemeClick = (index: number) => {
     setActiveMeme(index);
   };
@@ -127,26 +191,26 @@ export default function YetiMemesSection() {
       <div className="mb-16 max-w-7xl mx-auto px-4">
         {/* Desktop Layout (lg+) - Pinterest Style Grid */}
         <MemeGrid 
-          memes={memes} 
+          memes={desktopMemes} 
           layout="desktop" 
           onMemeClick={handleMemeClick} 
         />
 
         {/* Large Desktop Layout (xl+) - 5 Columns */}
         <MemeGrid 
-          memes={memes} 
+          memes={desktopMemes} 
           layout="large-desktop" 
           onMemeClick={handleMemeClick} 
         />
 
         {/* Tablet Layout (md-lg) - 3 Columns */}
         <MemeGrid 
-          memes={memes.slice(0, 15)} 
+          memes={desktopMemes.slice(0, 15)} 
           layout="tablet" 
           onMemeClick={handleMemeClick} 
         />
 
-        {/* Mobile Layout (sm) - 2 Columns - Only 7 cards with MAINVIDEO.webm first */}
+        {/* Mobile Layout (sm) - 2 Columns - Only 7 cards with MAINVIDEO.mp4 first */}
         <MemeGrid 
           memes={mobileMemes} 
           layout="mobile" 
