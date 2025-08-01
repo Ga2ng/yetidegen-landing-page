@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { WalletWidget } from "../components";
+import { WalletWidget, JupiterSwapper } from "../components";
 
 export default function HowToBuySection() {
   const [activeStep, setActiveStep] = useState(0);
@@ -159,53 +159,8 @@ export default function HowToBuySection() {
             </motion.div>
           </div>
 
-          {/* Contract Address - Elegant Design */}
-          <motion.div 
-            className="mt-16 text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-bold text-emerald-200 mb-6">
-              CONTRACT ADDRESS
-            </h3>
-            <div className="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 backdrop-blur-md rounded-2xl border border-emerald-400/30 p-6 max-w-2xl mx-auto">
-              <code className="text-sm md:text-base text-emerald-300 font-mono break-all">
-                FuyeX8cpctBwQVDFYgKxYh1JgiXCkK9g4RBVCXm4pump
-              </code>
-            </div>
-          </motion.div>
-
-          {/* Action Buttons */}
-          <motion.div 
-            className="mt-12 text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <motion.a
-                href="https://phantom.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                GET PHANTOM WALLET
-              </motion.a>
-              {/* <motion.a
-                href="#buy"
-                className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                BUY SOL
-              </motion.a> */}
-            </div>
-          </motion.div>
+          {/* Jupiter Swapper Section */}
+          <JupiterSwapper />
         </div>
       </div>
     </section>

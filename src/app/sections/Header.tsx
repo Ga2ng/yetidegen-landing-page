@@ -106,6 +106,7 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
                     fill
                     className="object-contain drop-shadow-2xl"
                     priority
+                    unoptimized
                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 35vw, 25vw"
                     style={{ 
                       filter: isMobile ? "drop-shadow(0 0 10px rgba(15, 196, 154, 0.1))" : "drop-shadow(0 0 20px rgba(15, 196, 154, 0.2))",
