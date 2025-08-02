@@ -1,191 +1,159 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   
-  const footerLinks = {
-    social: [
-      { name: 'Twitter', url: '#', icon: '𝕏' },
-      { name: 'Telegram', url: '#', icon: '📱' },
-      { name: 'Discord', url: '#', icon: '🎮' },
-      { name: 'Instagram', url: '#', icon: '📷' },
-      { name: 'TikTok', url: '#', icon: '🎵' }
-    ],
-    quickLinks: [
-      { name: 'How to Buy', url: '#how-to-buy' },
-      { name: 'Roadmap', url: '#roadmap' },
-      { name: 'Partners', url: '#partners' },
-      { name: 'FAQ', url: '#faq' }
-    ],
-    resources: [
-      { name: 'Contract', url: '#', address: 'FuyeX8cpctBwQVDFYgKxYh1JgiXCkK9g4RBVCXm4pump' },
-      { name: 'DexScreener', url: '#' },
-      { name: 'Birdeye', url: '#' },
-      { name: 'CoinGecko', url: '#' }
-    ]
-  };
+  const officialLinks = [
+    { name: 'DexScreener', url: 'https://dexscreener.com/solana/FuyeX8cpctBwQVDFYgKxYh1JgiXCkK9g4RBVCXm4pump' },
+    { name: 'Birdeye', url: 'https://birdeye.so/token/FuyeX8cpctBwQVDFYgKxYh1JgiXCkK9g4RBVCXm4pump' },
+    { name: 'CoinGecko', url: 'https://www.coingecko.com/en/coins/yeti' },
+    { name: 'CoinMarketCap', url: 'https://coinmarketcap.com/currencies/yeti/' }
+  ];
+
+  const socialLinks = [
+    { name: 'Twitter', url: 'https://twitter.com/yetidegen', icon: '𝕏' },
+    { name: 'Telegram', url: 'https://t.me/yetidegen', icon: '📱' },
+    { name: 'Discord', url: 'https://discord.gg/yetidegen', icon: '🎮' },
+    { name: 'Instagram', url: 'https://instagram.com/yetidegen', icon: '📷' },
+    { name: 'TikTok', url: 'https://tiktok.com/@yetidegen', icon: '🎵' },
+    { name: 'YouTube', url: 'https://youtube.com/@yetidegen', icon: '📺' }
+  ];
 
   return (
     <footer className="relative bg-gradient-to-br from-black via-slate-900 to-emerald-900 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-16 left-16 w-72 h-72 bg-emerald-500/8 rounded-full blur-3xl" />
+        <div className="absolute bottom-16 right-16 w-96 h-96 bg-teal-500/8 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-400/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-16">
+      <div className="relative z-10 container mx-auto px-6 py-20">
         <div className="max-w-7xl mx-auto">
           {/* Main Footer Content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {/* Brand Section */}
-            <div className="lg:col-span-2">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 mb-16">
+            {/* Left Side - GIF and Main Content (3/5) */}
+            <div className="lg:col-span-3">
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
+                className="flex flex-col items-center lg:items-start"
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-white via-emerald-100 to-emerald-300 bg-clip-text text-transparent mb-4">
+                {/* GIF Container - Optimized Size */}
+                <div className="relative w-48 h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64 mb-8">
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 rounded-full blur-xl"></div>
+                  <Image
+                    src="/assets/gif/dance.gif"
+                    alt="YETI Mascot"
+                    fill
+                    className="object-contain relative z-10"
+                    unoptimized
+                    sizes="(max-width: 1024px) 192px, (max-width: 1280px) 224px, 256px"
+                  />
+                </div>
+                
+                {/* Title */}
+                <h3 className="text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-white via-emerald-100 to-emerald-300 bg-clip-text text-transparent mb-6 text-center lg:text-left tracking-tight">
                   YETI
                 </h3>
-                <p className="text-emerald-200/80 mb-6 max-w-md">
-                  The fastest-growing degen blogger. Building the ultimate meme empire with the most powerful crypto community.
+                
+                {/* Description */}
+                <p className="text-emerald-200/80 text-lg lg:text-xl mb-8 max-w-2xl text-center lg:text-left leading-relaxed">
+                  The fastest-growing degen blogger. 600M views, 500K followers on TikTok & IG in 3 months. Now he's uniting the most powerful crypto community.
                 </p>
                 
-                {/* Social Links */}
-                <div className="flex gap-4">
-                  {footerLinks.social.map((social, index) => (
-                    <motion.a
-                      key={social.name}
-                      href={social.url}
-                      className="w-10 h-10 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 backdrop-blur-md rounded-full border border-emerald-400/30 flex items-center justify-center text-emerald-300 hover:border-emerald-300/50 transition-all duration-300"
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <span className="text-lg">{social.icon}</span>
-                    </motion.a>
-                  ))}
+                {/* Contract Address */}
+                <div className="w-full max-w-2xl bg-gradient-to-r from-emerald-500/10 to-teal-500/10 backdrop-blur-lg rounded-2xl border border-emerald-400/30 p-6 shadow-2xl">
+                  <h4 className="text-sm font-semibold text-emerald-300 mb-3 text-center lg:text-left uppercase tracking-wider">Contract Address</h4>
+                  <div className="bg-black/40 rounded-xl p-4">
+                    <code className="text-sm text-emerald-200 font-mono break-all block">
+                      FuyeX8cpctBwQVDFYgKxYh1JgiXCkK9g4RBVCXm4pump
+                    </code>
+                  </div>
                 </div>
               </motion.div>
             </div>
 
-            {/* Quick Links */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h4 className="text-lg font-semibold text-emerald-300 mb-4">Quick Links</h4>
-              <ul className="space-y-2">
-                {footerLinks.quickLinks.map((link, index) => (
-                  <motion.li
-                    key={link.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <a 
-                      href={link.url}
-                      className="text-emerald-200/80 hover:text-emerald-300 transition-colors duration-300"
-                    >
-                      {link.name}
-                    </a>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
+            {/* Right Side - Links (2/5) */}
+            <div className="lg:col-span-2">
+              <motion.div 
+                className="flex flex-col h-full justify-start pt-8"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                {/* Official Links */}
+                <div className="mb-12">
+                  <h4 className="text-xl font-bold text-emerald-300 mb-6 uppercase tracking-wider">Official Links</h4>
+                  <ul className="space-y-4">
+                    {officialLinks.map((link, index) => (
+                      <motion.li
+                        key={link.name}
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                        viewport={{ once: true }}
+                      >
+                        <a 
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group text-emerald-200/80 hover:text-emerald-300 transition-all duration-300 flex items-center text-lg py-2"
+                        >
+                          <span className="w-2 h-2 bg-emerald-400 rounded-full mr-4 group-hover:scale-125 transition-transform duration-300"></span>
+                          <span className="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
+                        </a>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
 
-            {/* Resources */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <h4 className="text-lg font-semibold text-emerald-300 mb-4">Resources</h4>
-              <ul className="space-y-2">
-                {footerLinks.resources.map((resource, index) => (
-                  <motion.li
-                    key={resource.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <a 
-                      href={resource.url}
-                      className="text-emerald-200/80 hover:text-emerald-300 transition-colors duration-300"
-                    >
-                      {resource.name}
-                    </a>
-                    {resource.address && (
-                      <div className="text-xs text-emerald-200/60 mt-1 break-all">
-                        {resource.address}
-                      </div>
-                    )}
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          </div>
-
-          {/* Contract Address Highlight */}
-          <motion.div 
-            className="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 backdrop-blur-md rounded-2xl border border-emerald-400/30 p-6 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="text-center">
-              <h4 className="text-lg font-semibold text-emerald-300 mb-2">Contract Address</h4>
-              <code className="text-sm text-emerald-200 font-mono break-all bg-black/30 px-4 py-2 rounded-lg">
-                FuyeX8cpctBwQVDFYgKxYh1JgiXCkK9g4RBVCXm4pump
-              </code>
+                {/* Social Links */}
+                <div>
+                  <h4 className="text-xl font-bold text-emerald-300 mb-6 uppercase tracking-wider">Social Media</h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    {socialLinks.map((social, index) => (
+                      <motion.a
+                        key={social.name}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="h-14 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 backdrop-blur-lg rounded-xl border border-emerald-400/30 flex items-center justify-center text-emerald-300 hover:border-emerald-300/50 hover:from-emerald-500/30 hover:to-teal-500/30 transition-all duration-300 shadow-lg hover:shadow-emerald-400/20 hover:shadow-xl"
+                        whileHover={{ scale: 1.05, y: -3 }}
+                        whileTap={{ scale: 0.98 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                        viewport={{ once: true }}
+                      >
+                        <span className="font-medium">{social.name}</span>
+                      </motion.a>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Bottom Section */}
           <div className="border-t border-emerald-400/20 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <motion.div 
-                className="text-emerald-200/60 text-sm"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                viewport={{ once: true }}
-              >
-                © {currentYear} $YETI. ALL RIGHTS RESERVED
-              </motion.div>
-              
-              <motion.div 
-                className="flex gap-6 text-sm"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.9 }}
-                viewport={{ once: true }}
-              >
-                <a href="#" className="text-emerald-200/60 hover:text-emerald-300 transition-colors">
-                  Privacy Policy
-                </a>
-                <a href="#" className="text-emerald-200/60 hover:text-emerald-300 transition-colors">
-                  Terms of Service
-                </a>
-                <a href="#" className="text-emerald-200/60 hover:text-emerald-300 transition-colors">
-                  Disclaimer
-                </a>
-              </motion.div>
-            </div>
+            <motion.div 
+              className="text-center text-emerald-200/60 text-sm font-medium tracking-wider"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              viewport={{ once: true }}
+            >
+              © {currentYear} $YETI. ALL RIGHTS RESERVED
+            </motion.div>
           </div>
         </div>
       </div>
     </footer>
   );
-} 
+}

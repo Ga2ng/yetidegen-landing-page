@@ -1,7 +1,7 @@
 "use client";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Header, VideoSection, MeetYetiSection, YetiMemesSection, HowToBuySection, PartnersSection, RoadmapSection, FAQSection, Footer } from "./sections";
+import { Header, VideoSection, MeetYetiSection, YetiMemesSection, HowToBuySection, PartnersSection, FAQSection, Footer } from "./sections";
 import { Navbar } from "./components";
 
 export default function Home() {
@@ -114,16 +114,13 @@ export default function Home() {
       <HowToBuySection />
 
       {/* Section 6 - Partners Section */}
-      {/* <PartnersSection /> */}
+      <PartnersSection /> 
 
-      {/* Section 7 - Roadmap Section */}
-      {/* <RoadmapSection /> */}
-
-      {/* Section 8 - FAQ Section */}
+      {/* Section 7 - FAQ Section */}
       <FAQSection />
 
       {/* Footer */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

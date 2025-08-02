@@ -42,7 +42,7 @@ export default function HowToBuySection() {
   ];
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-emerald-900 overflow-hidden">
+    <section id="how-to-buy" className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-emerald-900 overflow-hidden">
       {/* Galaxy Background Elements - Optimized */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Subtle Grid Pattern */}
@@ -89,7 +89,7 @@ export default function HowToBuySection() {
         ))}
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-20">
+      <div className="relative z-10 container mx-auto px-4 py-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <motion.div 

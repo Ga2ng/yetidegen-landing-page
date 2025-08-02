@@ -77,7 +77,7 @@ export default function VideoSection({
   };
 
   return (
-    <div className="relative min-h-screen bg-black overflow-hidden">
+    <section id="viral-content" className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-emerald-900 overflow-hidden">
       {/* Full Screen Video Background */}
       <div className="absolute inset-0">
         {/* Desktop Video */}
@@ -328,6 +328,6 @@ export default function VideoSection({
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
       </motion.button>
-    </div>
+    </section>
   );
 } 

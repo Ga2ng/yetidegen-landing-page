@@ -18,11 +18,50 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Tokenomics", href: "#tokenomics" },
-    { name: "Roadmap", href: "#roadmap" },
-    { name: "Community", href: "#community" },
+    { name: "About", href: "#viral-content" },
+    { name: "Meet YETI", href: "#meet-yeti" },
+    { name: "Memes", href: "#memes" },
+    { name: "How to Buy", href: "#how-to-buy" },
+    { name: "Partners", href: "#partners" },
+    { name: "FAQ", href: "#faq" },
   ];
+
+  const smoothScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      const offsetTop = targetElement.offsetTop -0; // Offset dikurangi untuk full screen
+      
+      // Smooth scroll dengan easing yang lebih halus
+      const startPosition = window.pageYOffset;
+      const distance = offsetTop - startPosition;
+      const duration = 1200; // Durasi lebih lama untuk smooth effect
+      let start: number | null = null;
+
+      const animation = (currentTime: number) => {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      };
+
+      // Easing function untuk smooth scroll
+      const easeInOutCubic = (t: number, b: number, c: number, d: number) => {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t * t + b;
+        t -= 2;
+        return c / 2 * (t * t * t + 2) + b;
+      };
+
+      requestAnimationFrame(animation);
+    }
+    
+    // Tutup mobile menu jika terbuka
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <motion.nav
@@ -43,13 +82,13 @@ export default function Navbar() {
             className="flex items-center space-x-3"
           >
             <div className="relative w-8 h-8 lg:w-10 lg:h-10">
-              {/* <Image
-                src="/assets/gif/yeti2.gif"
+              <Image
+                src="/assets/images/icon.png"
                 alt="YETI Icon"
                 fill
                 className="object-contain"
                 priority
-              /> */}
+              />
             </div>
             <span className="text-white font-bold text-lg lg:text-xl">
               $YETI
@@ -57,11 +96,12 @@ export default function Navbar() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6">
             {navItems.map((item, index) => (
               <motion.a
                 key={item.name}
                 href={item.href}
+                onClick={(e) => smoothScrollTo(e, item.href)}
                 className="text-slate-300 hover:text-emerald-400 transition-colors duration-200 font-medium relative group"
                 whileHover={{ y: -2 }}
                 initial={{ opacity: 0, y: 20 }}
@@ -77,7 +117,7 @@ export default function Navbar() {
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
             <motion.a
-              href="https://t.me/YetiSolana"
+              href="https://t.me/yetidegen"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 px-4 py-2 text-emerald-400 hover:text-emerald-300 transition-colors duration-200"
@@ -90,7 +130,8 @@ export default function Navbar() {
             </motion.a>
             
             <motion.a
-              href="#buy"
+              href="#how-to-buy"
+              onClick={(e) => smoothScrollTo(e, '#how-to-buy')}
               className="px-6 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -147,11 +188,11 @@ export default function Navbar() {
                   <motion.a
                     key={item.name}
                     href={item.href}
+                    onClick={(e) => smoothScrollTo(e, item.href)}
                     className="block text-slate-300 hover:text-emerald-400 transition-colors duration-200 font-medium py-2"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}
                   </motion.a>
@@ -159,7 +200,7 @@ export default function Navbar() {
                 
                 <div className="pt-4 border-t border-emerald-400/20 space-y-3">
                   <motion.a
-                    href="https://t.me/YetiSolana"
+                    href="https://t.me/yetidegen"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-2 text-emerald-400 hover:text-emerald-300 transition-colors duration-200"
@@ -175,12 +216,12 @@ export default function Navbar() {
                   </motion.a>
                   
                   <motion.a
-                    href="#buy"
+                    href="#how-to-buy"
+                    onClick={(e) => smoothScrollTo(e, '#how-to-buy')}
                     className="block w-full px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-lg text-center hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6 }}
-                    onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Buy $YETI Now
                   </motion.a>

@@ -29,7 +29,7 @@ export default function MeetYetiSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-black via-slate-900 to-emerald-900 overflow-hidden">
+    <section id="meet-yeti" className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-emerald-900 overflow-hidden">
       {/* Simple Background Elements */}
       <div className="absolute inset-0 opacity-20">
         <div 
@@ -108,7 +108,7 @@ export default function MeetYetiSection() {
         </div>
       )}
 
-      <div className="relative z-10 container mx-auto px-4 py-16">
+      <div className="relative z-10 container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           {isMobile ? (

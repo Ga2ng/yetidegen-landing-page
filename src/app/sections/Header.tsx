@@ -27,7 +27,7 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-background-start via-background-mid to-background-end performance-optimized">
+    <section id="home" className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-emerald-900 overflow-hidden">
       <AnimatePresence>
         <main className="relative min-h-screen w-full overflow-hidden">
           {/* Enhanced Background with Multiple Layers */}
@@ -301,6 +301,6 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
           )}
         </main>
       </AnimatePresence>
-    </div>
+    </section>
   );
 } 

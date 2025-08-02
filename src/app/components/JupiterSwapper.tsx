@@ -228,9 +228,9 @@ export default function JupiterSwapper() {
       transition={{ duration: 0.8, delay: 0.3 }}
       viewport={{ once: true }}
     >
-      {/* Background Glow Effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-emerald-500/20 rounded-3xl blur-3xl" />
-      
+        {/* Background Glow Effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-emerald-500/20 rounded-3xl blur-3xl" />
+        
       {/* Jupiter Terminal Integration */}
       <div className="relative min-h-[600px] max-w-4xl mx-auto">
         {/* Loading Placeholder */}
@@ -248,7 +248,7 @@ export default function JupiterSwapper() {
             </div>
           </div>
         )}
-        
+
         {/* Error State */}
         {error && (
           <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-red-600/10 rounded-2xl flex items-center justify-center z-10">
@@ -263,17 +263,17 @@ export default function JupiterSwapper() {
             </div>
           </div>
         )}
-        
+            
         {/* Jupiter Terminal Target */}
         <div 
           id="integrated-terminal"
           className="relative z-20 rounded-2xl overflow-hidden"
-          style={{ 
+              style={{ 
             minHeight: '600px',
-            background: 'transparent'
-          }}
-        />
+                background: 'transparent'
+              }}
+            />
       </div>
     </motion.div>
   );
-}
+} 

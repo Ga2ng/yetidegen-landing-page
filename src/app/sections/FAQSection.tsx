@@ -26,20 +26,20 @@ export default function FAQSection() {
       question: "Is YETI related to Yeti DYOR?",
       answer: "No, we're different teams with separate socials and no connection. We respect what they're doing, but we're not related in any way. Just like there are many Pepes or Wolf tokens out there, having the same character doesn't mean it's the same project. What we can say is this: YETI was the first Yeti launched and the first tokenized Yeti community."
     },
-    {
-      id: 5,
-      question: "How do I store my YETI tokens?",
-      answer: "You can store your YETI tokens in any Solana-compatible wallet like Phantom, Solflare, or Backpack. Make sure to keep your private keys safe and never share them with anyone."
-    },
-    {
-      id: 6,
-      question: "What's the total supply of YETI?",
-      answer: "The total supply of YETI is 800 million tokens. The LP is 100% burned and the contract is renounced, ensuring maximum security for holders."
-    }
+    // {
+    //   id: 5,
+    //   question: "How do I store my YETI tokens?",
+    //   answer: "You can store your YETI tokens in any Solana-compatible wallet like Phantom, Solflare, or Backpack. Make sure to keep your private keys safe and never share them with anyone."
+    // },
+    // {
+    //   id: 6,
+    //   question: "What's the total supply of YETI?",
+    //   answer: "The total supply of YETI is 800 million tokens. The LP is 100% burned and the contract is renounced, ensuring maximum security for holders."
+    // }
   ];
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-emerald-900 overflow-hidden">
+    <section id="faq" className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-emerald-900 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl" />
@@ -47,7 +47,7 @@ export default function FAQSection() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-400/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-20">
+      <div className="relative z-10 container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <motion.div 
@@ -114,57 +114,6 @@ export default function FAQSection() {
               </motion.div>
             ))}
           </div>
-
-          {/* Contact Section */}
-          {/* <motion.div 
-            className="mt-16 text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-bold text-emerald-300 mb-6">
-              Still have questions?
-            </h3>
-            <p className="text-emerald-200/80 mb-8 max-w-2xl mx-auto">
-              Join our community channels and get answers from the YETI team and community members.
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-4">
-              {['Telegram', 'Discord', 'Twitter', 'Email'].map((platform, index) => (
-                <motion.button
-                  key={platform}
-                  className="bg-gradient-to-r from-emerald-500/20 to-teal-500/20 backdrop-blur-md rounded-full px-6 py-3 border border-emerald-400/30 text-emerald-300 hover:border-emerald-300/50 transition-all duration-300"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {platform}
-                </motion.button>
-              ))}
-            </div>
-          </motion.div> */}
-
-          {/* Quick Stats */}
-          {/* <motion.div 
-            className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-400 mb-2">24/7</div>
-              <div className="text-sm text-emerald-300">Support</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-400 mb-2">100%</div>
-              <div className="text-sm text-emerald-300">Community Driven</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-400 mb-2">Transparent</div>
-              <div className="text-sm text-emerald-300">Development</div>
-            </div>
-          </motion.div> */}
         </div>
       </div>
     </section>
