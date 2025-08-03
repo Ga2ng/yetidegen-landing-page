@@ -26,6 +26,41 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
     };
   }, []);
 
+  // Smooth scroll function seperti di navbar
+  const smoothScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      const offsetTop = targetElement.offsetTop - 80; // Offset untuk navbar
+      
+      // Smooth scroll dengan easing yang lebih halus
+      const startPosition = window.pageYOffset;
+      const distance = offsetTop - startPosition;
+      const duration = 1200; // Durasi lebih lama untuk smooth effect
+      let start: number | null = null;
+
+      const animation = (currentTime: number) => {
+        if (start === null) start = currentTime;
+        const timeElapsed = currentTime - start;
+        const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      };
+
+      // Easing function untuk smooth scroll
+      const easeInOutCubic = (t: number, b: number, c: number, d: number) => {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t * t + b;
+        t -= 2;
+        return c / 2 * (t * t * t + 2) + b;
+      };
+
+      requestAnimationFrame(animation);
+    }
+  };
+
   return (
     <section id="home" className="relative min-h-screen bg-gradient-to-br from-slate-900 via-black to-emerald-900 overflow-hidden">
       <AnimatePresence>
@@ -192,11 +227,10 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
 
                   {/* Enhanced Action Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4 items-start">
-                    {/* Primary CTA Button */}
+                    {/* Primary CTA Button - Redirect ke How to Buy Section */}
                     <motion.a
-                      href="#"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="#how-to-buy"
+                      onClick={(e) => smoothScrollTo(e, '#how-to-buy')}
                       className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden rounded-2xl border-2 border-emerald-400/30 text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-emerald-400/60"
                       whileHover={!isMobile ? { scale: 1.05 } : {}}
                       whileTap={!isMobile ? { scale: 0.98 } : {}}
@@ -221,8 +255,7 @@ export default function Header({ scale, opacity, isVideoVisible }: HeaderProps) 
 
                     {/* Telegram Button */}
                     <motion.a
-                      // href="https://t.me/YetiSolana"
-                      href="#"
+                      href="https://t.me/yetidegen"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden rounded-2xl border-2 border-emerald-400/30 text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-emerald-400/60"
