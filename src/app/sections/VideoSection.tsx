@@ -318,7 +318,7 @@ export default function VideoSection({
       </div>
 
       {/* Back to Top Button */}
-      <motion.button
+      {/* <motion.button
         className="absolute bottom-8 right-8 z-30 p-4 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 backdrop-blur-md rounded-full border border-emerald-400/30 text-white hover:scale-110 transition-all duration-300"
         whileHover={{ y: -2, scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -327,7 +327,7 @@ export default function VideoSection({
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
-      </motion.button>
+      </motion.button> */}
     </section>
   );
 } 

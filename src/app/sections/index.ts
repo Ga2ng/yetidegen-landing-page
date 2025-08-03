@@ -5,5 +5,6 @@ export { default as YetiMemesSection } from './YetiMemesSection';
 export { default as HowToBuySection } from './HowToBuySection';
 export { default as PartnersSection } from './PartnersSection';
 export { default as RoadmapSection } from './RoadmapSection';
+export { default as TokenomicsSection } from './TokenomicsSection';
 export { default as FAQSection } from './FAQSection';
 export { default as Footer } from './Footer';

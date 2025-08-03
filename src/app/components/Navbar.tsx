@@ -17,12 +17,14 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home" },
+    // { name: "Home", href: "#home" },
     { name: "About", href: "#viral-content" },
     { name: "Meet YETI", href: "#meet-yeti" },
     { name: "Memes", href: "#memes" },
+    { name: "Tokenomics", href: "#tokenomics" },
     { name: "How to Buy", href: "#how-to-buy" },
     { name: "Partners", href: "#partners" },
+    { name: "Roadmap", href: "#roadmap" },
     { name: "FAQ", href: "#faq" },
   ];
 
