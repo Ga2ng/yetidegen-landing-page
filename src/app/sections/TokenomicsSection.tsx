@@ -97,22 +97,22 @@ export default function TokenomicsSection() {
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-emerald-100 to-emerald-300 bg-clip-text text-transparent">
-              Tokenomics
+            <h2 className="text-6xl md:text-8xl font-black mb-4 bg-gradient-to-r from-cyan-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent drop-shadow-2xl tracking-tight">
+              TOKENOMICS
             </h2>
-            <p className="text-xl md:text-2xl text-emerald-300 max-w-3xl mx-auto">
-              The foundation of the YETI ecosystem.
+            <p className="text-2xl md:text-3xl text-cyan-200 font-semibold max-w-4xl mx-auto drop-shadow-lg">
+              THE FOUNDATION OF THE $YETI ECOSYSTEM
             </p>
           </motion.div>
 
           {/* Tokenomics Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
             {tokenomics.map((item, index) => (
               <motion.div
                 key={item.id}
@@ -123,7 +123,7 @@ export default function TokenomicsSection() {
                 viewport={{ once: true }}
               >
                 {/* Card Background */}
-                <div className="bg-gradient-to-br from-slate-900/90 to-black/95 backdrop-blur-md rounded-3xl border border-emerald-400/30 p-6 shadow-xl hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-300 relative overflow-hidden h-full">
+                <div className="bg-gradient-to-br from-slate-900/70 to-black/80 backdrop-blur-md rounded-3xl border border-emerald-400/30 p-4 shadow-xl hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-300 relative overflow-hidden h-full">
                   
                   {/* Abstract Background Elements */}
                   <div className="absolute inset-0 opacity-20">
@@ -133,7 +133,7 @@ export default function TokenomicsSection() {
                   </div>
 
                   {/* GIF Background - Optimized for Mobile */}
-                  <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+                  <div className="absolute inset-0 opacity-25 group-hover:opacity-35 transition-opacity duration-300">
                     <Image
                       src={item.gif}
                       alt={`${item.title} Background`}
@@ -146,19 +146,19 @@ export default function TokenomicsSection() {
                   </div>
 
                   {/* Content */}
-                  <div className="relative z-10 text-center h-full flex flex-col justify-center">
-                    {/* Title */}
-                    <h3 className="text-lg font-semibold text-emerald-300 mb-3">
+                  <div className="relative z-10 text-center h-full flex flex-col justify-center space-y-3">
+                    {/* Title with enhanced styling */}
+                    <h3 className="text-2xl md:text-3xl font-black text-white mb-1 drop-shadow-2xl tracking-wide">
                       {item.title}
                     </h3>
 
-                    {/* Value */}
-                    <div className="text-xl md:text-2xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent mb-3">
+                    {/* Value with gradient and glow effect */}
+                    <div className="text-2xl md:text-3xl font-black bg-gradient-to-r from-cyan-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent mb-1 drop-shadow-2xl">
                       {item.value}
                     </div>
 
-                    {/* Description */}
-                    <p className="text-sm text-emerald-200/80">
+                    {/* Description with better contrast */}
+                    <p className="text-sm text-cyan-100 font-semibold drop-shadow-lg px-1">
                       {item.description}
                     </p>
                   </div>

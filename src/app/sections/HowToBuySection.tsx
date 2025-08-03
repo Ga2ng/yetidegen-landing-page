@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { WalletWidget, JupiterSwapper } from "../components";
+import { WalletWidget, JupiterSwapper, WalletConnectButton } from "../components";
 
 export default function HowToBuySection() {
   const [activeStep, setActiveStep] = useState(0);
@@ -159,8 +159,99 @@ export default function HowToBuySection() {
             </motion.div>
           </div>
 
-          {/* Jupiter Swapper Section */}
-          <JupiterSwapper />
+          {/* Jupiter Swapper & Wallet Connect Section - Side by Side */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Left Side - Jupiter Swapper */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="flex justify-center"
+              >
+                <JupiterSwapper />
+              </motion.div>
+
+              {/* Right Side - Wallet Connect with GIF */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="text-center space-y-8"
+              >
+                {/* Animated GIF */}
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  viewport={{ once: true }}
+                  className="flex justify-center mb-6"
+                >
+                  <img 
+                    src="/assets/gif/yeti1.gif" 
+                    alt="Yeti Dance" 
+                    className="w-32 h-32 rounded-full border-4 border-emerald-400/30 shadow-lg shadow-emerald-500/25"
+                  />
+                </motion.div>
+
+                {/* Header */}
+                <div className="space-y-4">
+                  <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-emerald-300 to-teal-300 bg-clip-text text-transparent">
+                    CONNECT YOUR WALLET
+                  </h3>
+                  <p className="text-lg text-slate-300 max-w-md mx-auto leading-relaxed">
+                    JOIN THE $YETI ARMY AND START YOUR TRADING JOURNEY WITH THE BEST WALLET EXPERIENCE
+                  </p>
+                </div>
+
+                {/* Wallet Connect Button */}
+                <motion.div
+                  initial={{ scale: 0.9 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                  viewport={{ once: true }}
+                  className="flex justify-center"
+                >
+                  <div className="transform hover:scale-110 transition-transform duration-300">
+                    <WalletConnectButton />
+                  </div>
+                </motion.div>
+
+                {/* Additional GIFs for visual appeal */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 1 }}
+                  viewport={{ once: true }}
+                  className="flex justify-center space-x-4 mt-8"
+                >
+                  <img 
+                    src="/assets/gif/dance.gif" 
+                    alt="Dance" 
+                    className="w-16 h-16 rounded-full border-2 border-emerald-400/20 opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  />
+                  <img 
+                    src="/assets/gif/thug.gif" 
+                    alt="Thug" 
+                    className="w-16 h-16 rounded-full border-2 border-emerald-400/20 opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  />
+                  <img 
+                    src="/assets/gif/yeti2.gif" 
+                    alt="Yeti 2" 
+                    className="w-16 h-16 rounded-full border-2 border-emerald-400/20 opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  />
+                </motion.div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

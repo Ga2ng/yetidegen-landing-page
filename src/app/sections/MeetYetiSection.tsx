@@ -217,25 +217,26 @@ export default function MeetYetiSection() {
                 style={{ opacity: isLoaded ? 1 : 0, transition: 'opacity 0.6s ease-in-out 0.2s' }}
               >
                 <div className="relative h-[400px] md:h-[500px] lg:h-[500px] flex items-center justify-center">
-                  {/* Mobile Layout - 2 webp images + 1 gif */}
-                  {/* Card 1 - Top Left - Webp */}
+                  {/* Mobile Layout - Same as Desktop */}
+                  {/* Card 1 - Top Left - GIF */}
                   <div className="absolute top-0 left-0 w-48 h-48">
-                    <div className="relative w-full h-full bg-gradient-to-br from-[#0FC49A]/8 to-emerald-500/8 rounded-xl border border-[#0FC49A]/40 overflow-hidden">
-                      <Image 
-                        src="/assets/images/yeti7.webp"
-                        alt="YETI Card 1"
-                        fill
-                        className="object-cover"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#0FC49A]/10 to-transparent" />
-                    </div>
+                    <LazyGifCard
+                      src="/assets/gif/yeti1.gif"
+                      alt="YETI Card 1"
+                      borderColor="border-[#0FC49A]/40"
+                      gradientFrom="from-[#0FC49A]/8"
+                      gradientTo="to-emerald-500/8"
+                      overlayColor="from-[#0FC49A]/10"
+                      initialAnimation={{ x: 0, y: 0, rotate: 0 }}
+                      delay={0}
+                      duration={0}
+                    />
                   </div>
 
                   {/* Card 2 - Center Right - GIF */}
                   <div className="absolute top-12 right-0 left-[180px] w-48 h-48">
                     <LazyGifCard
-                      src="/assets/gif/yeti5.gif"
+                      src="/assets/gif/yeti2.gif"
                       alt="YETI Card 2"
                       borderColor="border-emerald-400/40"
                       gradientFrom="from-emerald-400/8"
@@ -247,18 +248,19 @@ export default function MeetYetiSection() {
                     />
                   </div>
 
-                  {/* Card 3 - Bottom Left - Webp */}
+                  {/* Card 3 - Bottom Left - GIF */}
                   <div className="absolute bottom-0 left-6 w-48 h-48">
-                    <div className="relative w-full h-full bg-gradient-to-br from-emerald-300/8 to-[#0FC49A]/8 rounded-xl border border-emerald-300/40 overflow-hidden">
-                      <Image 
-                        src="/assets/images/yeti8.webp"
-                        alt="YETI Card 3"
-                        fill
-                        className="object-cover"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-300/10 to-transparent" />
-                    </div>
+                    <LazyGifCard
+                      src="/assets/gif/yeti3.gif"
+                      alt="YETI Card 3"
+                      borderColor="border-emerald-300/40"
+                      gradientFrom="from-emerald-300/8"
+                      gradientTo="to-[#0FC49A]/8"
+                      overlayColor="from-emerald-300/10"
+                      initialAnimation={{ x: 0, y: 0, rotate: 0 }}
+                      delay={0}
+                      duration={0}
+                    />
                   </div>
                 </div>
               </div>
@@ -271,8 +273,8 @@ export default function MeetYetiSection() {
                 viewport={{ once: true }}
               >
                 <div className="relative h-[400px] md:h-[500px] lg:h-[500px] flex items-center justify-center">
-                  {/* Desktop Layout - All GIFs with proper positioning */}
-                  {/* Card 1 - Top Left Zig */}
+                  {/* Desktop Layout - Same arrangement as Mobile but with animations */}
+                  {/* Card 1 - Top Left - GIF */}
                   <div className="absolute top-0 left-0 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
                     <LazyGifCard
                       src="/assets/gif/yeti4.gif"
@@ -287,7 +289,7 @@ export default function MeetYetiSection() {
                     />
                   </div>
 
-                  {/* Card 2 - Center Right Zag */}
+                  {/* Card 2 - Center Right - GIF */}
                   <div className="absolute top-12 md:top-16 right-0 left-[180px] md:left-[200px] lg:left-[250px] w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
                     <LazyGifCard
                       src="/assets/gif/yeti5.gif"
@@ -302,7 +304,7 @@ export default function MeetYetiSection() {
                     />
                   </div>
 
-                  {/* Card 3 - Bottom Left Zig */}
+                  {/* Card 3 - Bottom Left - GIF */}
                   <div className="absolute bottom-0 left-6 md:left-8 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64">
                     <LazyGifCard
                       src="/assets/gif/yeti6.gif"
